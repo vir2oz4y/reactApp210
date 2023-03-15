@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode development --hot",
+    "start": "react-scripts start",
     "build": "webpack --mode production"
   },
   "eslintConfig": {
