@@ -6,6 +6,10 @@ import {
 import MainPage from "../MainPage";
 import StudentsPage from "../StudentsPage";
 import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
+import KiryutinVladPage from "../StudentPage/KiryutinVlad/KiryutinVladPage";
+import Test1 from "../StudentPage/KiryutinVlad/test1/Test1";
+import Test2 from "../StudentPage/KiryutinVlad/test2/Test2";
+
 
 const RouteComponent = () => {
     return (
@@ -15,6 +19,12 @@ const RouteComponent = () => {
                     <Route index element={<StudentsPage/>} />
 
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} />
+                    <Route path={'Vlados'} element={<KiryutinVladPage/>} >
+
+                        <Route path={'test1'} element={<Test1/>} />
+                        <Route path={'test2'} element={<Test2/>} />
+                    </Route>
+
                 </Route>
             </Routes>
         </HashRouter>
