@@ -8,14 +8,8 @@ const StudentsPage = () => {
     return (
         <div>
             <Header/>
-            <Stack direction="row" spacing={2} padding={'1em'}>
 
-                <StudentElement
-                    fio={'Крючков Николай Алексеевич'}
-                    description={'Middle fullstack developer'}
-                    imageSrc={'https://sky.pro/media/wp-content/uploads/2022/03/glavnaya-9-1.png'}
-                    navigateTo={'/teacher'}
-                />
+            <Stack direction="row" spacing={2} padding={'1em'}>
 
                 <StudentElement
                     fio={'Пепелев Сергей Сергеевич'}
