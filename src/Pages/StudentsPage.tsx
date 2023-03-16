@@ -18,11 +18,12 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
-                    fio={'Крючков Николай Алексеевич'}
-                    description={'Middle fullstack developer'}
-                    imageSrc={'https://sky.pro/media/wp-content/uploads/2022/03/glavnaya-9-1.png'}
-                    navigateTo={'/teacher'}
+                    fio={'Ондышев Дмитрий Витальевич'}
+                    description={'Не Middle fullstack developer'}
+                    imageSrc={'https://avatars.githubusercontent.com/u/52341158?v=4'}
+                    navigateTo={'/ondyshev'}
                 />
+
 
             </Stack>
         </div>
