@@ -12,7 +12,6 @@ const StudentsPage = () => {
             <Stack direction="row" spacing={2} padding={'1em'}>
 
                 <StudentElement
-
                     fio={'Ондышев Дмитрий Витальевич'}
                     description={'Не Middle fullstack developer'}
                     imageSrc={'https://avatars.githubusercontent.com/u/52341158?v=4'}
@@ -20,7 +19,13 @@ const StudentsPage = () => {
                  />
 
                 <StudentElement
+                    fio={'Трубников Тимур Андреевич'}
+                    description={'Student'}
+                    imageSrc={'https://fanibani.ru/images/wp-content/uploads/2017/06/Volk-42.jpg'}
+                    navigateTo={'/trubnikov'}
+                 />
 
+                 <StudentElement
                     fio={'Кирютин Владислав Вадимович'}
                     description={'Бархатные тяги'}
                     imageSrc={'https://i.imgur.com/iNkudWF.png'}
