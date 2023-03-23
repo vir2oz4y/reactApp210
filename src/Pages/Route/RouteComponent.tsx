@@ -9,7 +9,14 @@ import StudentsPage from "../StudentsPage";
 
 import TrubnikovTimurPage from "../StudentPage/TrubnikovTimur/TrubnikovTimurPage";
 import {default as TrubnikovTest2} from "../StudentPage/TrubnikovTimur/Test2/Test2";
-import {default as TrubnikovTest1} from "../StudentPage/TrubnikovTimur/Test1/Test1";
+import { default as TrubnikovTest1 } from "../StudentPage/TrubnikovTimur/Test1/Test1";
+
+import FilipushkoPage from "../StudentPage/filipushko/FilipushkoPage";
+import { default as FilipushkoCategory } from "../StudentPage/filipushko/Category/CategoryPage";
+import { default as FilipushkoClient } from "../StudentPage/filipushko/Client/ClientPage";
+import { default as FilipushkoManufacturer } from "../StudentPage/filipushko/Manufacturer/ManufacturerPage";
+import { default as FilipushkoOrder } from "../StudentPage/filipushko/Order/OrderPage";
+import { default as FilipushkoProduct } from "../StudentPage/filipushko/Product/ProductPage";
 
 import KiryutinVladPage from "../StudentPage/KiryutinVlad/KiryutinVladPage";
 import {default as KiryutinTest1} from "../StudentPage/KiryutinVlad/test1/Test1";
@@ -46,6 +53,14 @@ const RouteComponent = () => {
                         <Route path={'test1'} element={<OndyshevTest1/>} />
                         <Route path={'test2'} element={<OndyshevTest2/>} />
                     </Route>
+
+                    {<Route path={'filipushko'} element={<FilipushkoPage></FilipushkoPage>}>
+                        <Route path={'test1'} element={<FilipushkoCategory />} />
+                        <Route path={'test2'} element={<FilipushkoClient />} />
+                        <Route path={'test2'} element={<FilipushkoManufacturer />} />
+                        <Route path={'test2'} element={<FilipushkoOrder />} />
+                        <Route path={'test2'} element={<FilipushkoProduct />} />
+                    </Route>}
 
                     <Route path={'Serega'} element={<PepelevSergeyPage/>} >
                        <Route path={'test1'} element={<PepelevTest1/>}/>

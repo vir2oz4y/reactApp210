@@ -38,7 +38,12 @@ const StudentsPage = () => {
                     imageSrc={'https://cdn.vox-cdn.com/thumbor/qCfHPH_9Mw78vivDlVDMu7xYc78=/715x248:1689x721/920x613/filters:focal(972x299:1278x605):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69305239/shrek4_disneyscreencaps.com_675.0.jpg'}
                     navigateTo={'/Serega'}
                 />
-
+                <StudentElement
+                    fio={'Филипушко Михаил Евгеньевич'}
+                    description={'бомбом'}
+                    imageSrc={'https://pibig.info/uploads/posts/2021-04/1619186380_19-pibig_info-p-animeshka-anime-krasivo-24.jpg'}
+                    navigateTo={'/filipushko'}
+                />
 
             </Stack>
         </div>
