@@ -27,6 +27,10 @@ import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 
+import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
+import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
+import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
+
 
 
 const RouteComponent = () => {
@@ -60,6 +64,11 @@ const RouteComponent = () => {
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'test1'} element={<Test1/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
+                    </Route>
+
+                    <Route path={'dyakov'} element={<DyakovDanilPage />} >
+                        <Route path={'test1'} element={<DyakovTest1 />} />
+                        <Route path={'test2'} element={<DyakovTest2 />} />
                     </Route>
                     
                 </Route>

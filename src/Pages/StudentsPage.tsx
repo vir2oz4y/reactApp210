@@ -39,6 +39,13 @@ const StudentsPage = () => {
                     navigateTo={'/Serega'}
                 />
 
+                <StudentElement
+                    fio={'Дьяков Данил Вадимович'}
+                    description={'xiaomi remix edit v8'}
+                    imageSrc={'https://a.d-cd.net/8gAAAgEDveA-1920.jpg'}
+                    navigateTo={'/Dyakov'}
+                />
+
 
             </Stack>
         </div>
