@@ -54,13 +54,15 @@ const RouteComponent = () => {
 
                     <Route path={'trubnikov'} element={<TrubnikovTimurPage/>} >
                         <Route path={'test1'} element={<TrubnikovTest1/>} />
-                        <Route path={'test2'} element={<TrubnikovTest2/>} />
+                        <Route path={'test2'} element={<TrubnikovTest2 />} />
+                        <Route path={'category'} element={<TrubnikovTest2 />} />
                     </Route>
                    
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'test1'} element={<Test1/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
+                    
                     
                 </Route>
             </Routes>
