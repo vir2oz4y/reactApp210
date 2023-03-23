@@ -27,6 +27,14 @@ import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 
+import ShchegolevaEkaterinaPage from '../StudentPage/ShchegolevaEkaterina/ShchegolevaEkaterinaPage';
+import ShchegolevaCategory from '../StudentPage/ShchegolevaEkaterina/Category/Category';
+import ShchegolevaClient from '../StudentPage/ShchegolevaEkaterina/Client/Client';
+import ShchegolevaManufacturer from '../StudentPage/ShchegolevaEkaterina/Manufacturer/Manufacturer';
+import ShchegolevaOrder from '../StudentPage/ShchegolevaEkaterina/Order/Order';
+import ShchegolevaProduct from '../StudentPage/ShchegolevaEkaterina/Product/Product';
+
+
 
 
 const RouteComponent = () => {
@@ -61,7 +69,14 @@ const RouteComponent = () => {
                         <Route path={'test1'} element={<Test1/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
-                    
+
+                    <Route path={'Shchegoleva'} element={<ShchegolevaEkaterinaPage/>} >
+                        <Route path={'Category'} element={<ShchegolevaCategory />} />
+                        <Route path={'Client'} element={<ShchegolevaClient />} />
+                        <Route path={'Manufacturer'} element={<ShchegolevaManufacturer />} />
+                        <Route path={'Order'} element={<ShchegolevaOrder />} />
+                        <Route path={'Product'} element={<ShchegolevaProduct />} />
+                    </Route>
                 </Route>
             </Routes>
         </HashRouter>

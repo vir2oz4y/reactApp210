@@ -38,7 +38,12 @@ const StudentsPage = () => {
                     imageSrc={'https://cdn.vox-cdn.com/thumbor/qCfHPH_9Mw78vivDlVDMu7xYc78=/715x248:1689x721/920x613/filters:focal(972x299:1278x605):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69305239/shrek4_disneyscreencaps.com_675.0.jpg'}
                     navigateTo={'/Serega'}
                 />
-
+                <StudentElement
+                    fio={'Щеголева Екатерина Сергеевна'}
+                    description={'студент0чка'}
+                    imageSrc={'https://avatars.dzeninfra.ru/get-zen_doc/3414416/pub_611a2ee07e37175eb617dd99_611d057b945d7f24e36a526f/scale_1200'}
+                    navigateTo={'/Shchegoleva'}
+                />
 
             </Stack>
         </div>
