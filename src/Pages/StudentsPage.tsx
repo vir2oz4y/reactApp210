@@ -16,7 +16,14 @@ const StudentsPage = () => {
                     description={'Не Middle fullstack developer'}
                     imageSrc={'https://avatars.githubusercontent.com/u/52341158?v=4'}
                     navigateTo={'/ondyshev'}
-                 />
+                />
+
+                <StudentElement
+                    fio={'Удалов Кирилл Андреевич'}
+                    description={'Student'}
+                    imageSrc={'https://avatars.mds.yandex.net/i?id=5f3038bed55e1b47442bc09b643fd0707af43d58-8287805-images-thumbs&n=13'}
+                    navigateTo={'/Udalov'}
+                />
 
                 <StudentElement
                     fio={'Трубников Тимур Андреевич'}
