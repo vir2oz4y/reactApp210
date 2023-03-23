@@ -39,6 +39,13 @@ const StudentsPage = () => {
                     navigateTo={'/Serega'}
                 />
 
+                <StudentElement
+                    fio={'Агеев Александр Андреевич'}
+                    description={'матиз 5.5 v12'}
+                    imageSrc={'https://www.thedrive.com/content/2021/03/NRE-lead.jpg?quality=85'}
+                    navigateTo={'/Ageev'}
+                />
+
 
             </Stack>
         </div>

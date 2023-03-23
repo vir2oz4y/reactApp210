@@ -27,6 +27,10 @@ import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 
+import AgeevAlexandrPage from "../StudentPage/AgeevAlezander/AgeevAlexandrPage";
+import test1 from "../StudentPage/AgeevAlezander/test1/Test1";
+import test2 from "../StudentPage/AgeevAlezander/test2/Test2";
+
 
 
 const RouteComponent = () => {
@@ -60,6 +64,11 @@ const RouteComponent = () => {
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'test1'} element={<Test1/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
+                    </Route>
+
+                    <Route path={'Ageev'} element={<AgeevAlexandrPage />} >
+                        <Route path={'test1'} element={<Test1 />} />
+                        <Route path={'test2'} element={<Test2 />} />
                     </Route>
                     
                 </Route>
