@@ -12,6 +12,13 @@ const StudentsPage = () => {
             <Stack direction="row" spacing={2} padding={'1em'}>
 
                 <StudentElement
+                    fio={'Крючков Николай Алексеевич'}
+                    description={'Middle fullstack developer'}
+                    imageSrc={'https://fanibani.ru/images/wp-content/uploads/2017/06/Volk-42.jpg'}
+                    navigateTo={'/teacher'}
+                />
+
+                <StudentElement
                     fio={'Ондышев Дмитрий Витальевич'}
                     description={'Не Middle fullstack developer'}
                     imageSrc={'https://avatars.githubusercontent.com/u/52341158?v=4'}

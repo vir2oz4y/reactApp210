@@ -26,6 +26,7 @@ import {default as PepelevTest2} from "../StudentPage/PepelevSergey/test2/Test2"
 import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
+import CategoryPage from "../StudentPage/KryuchkovNick/Category/CategoryPage";
 
 
 
@@ -42,6 +43,7 @@ const RouteComponent = () => {
                         <Route path={'test2'} element={<KiryutinTest2/>} />
                     </Route>
                     
+                  
                     <Route path={'ondyshev'} element={<OndyshevDmitryPage></OndyshevDmitryPage>}>
                         <Route path={'test1'} element={<OndyshevTest1/>} />
                         <Route path={'test2'} element={<OndyshevTest2/>} />
@@ -58,7 +60,7 @@ const RouteComponent = () => {
                     </Route>
                    
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
-                        <Route path={'test1'} element={<Test1/>}/>
+                        <Route path={'category'} element={<CategoryPage/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
                     
