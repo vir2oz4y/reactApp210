@@ -27,6 +27,12 @@ import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 
+import BezlepkinaPage from '../StudentPage/Bezlepkina/BezlepkinaPage';
+import BezlepkinaCategory from '../StudentPage/Bezlepkina/Category/Category';
+import BezlepkinaClient from '../StudentPage/Bezlepkina/Client/Client';
+import BezlepkinaOrder from '../StudentPage/Bezlepkina/Order/Order';
+import BezlepkinaProduct from '../StudentPage/Bezlepkina/Product/Product';
+import BezlepkinaManufacturer from '../StudentPage/Bezlepkina/Manufacturer/Manufacturer';
 
 
 const RouteComponent = () => {
@@ -61,7 +67,14 @@ const RouteComponent = () => {
                         <Route path={'test1'} element={<Test1/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
-                    
+
+                    <Route path={'Bezlepkina'} element={<BezlepkinaPage/>} >
+                        <Route path={'Category'} element={<BezlepkinaCategory />} />
+                        <Route path={'Client'} element={<BezlepkinaClient />} />
+                        <Route path={'Manufacturer'} element={<BezlepkinaManufacturer />} />
+                        <Route path={'Order'} element={<BezlepkinaOrder />} />
+                        <Route path={'Product'} element={<BezlepkinaProduct />} />
+                    </Route>
                 </Route>
             </Routes>
         </HashRouter>
