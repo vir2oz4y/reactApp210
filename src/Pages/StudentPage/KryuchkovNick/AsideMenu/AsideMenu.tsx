@@ -11,14 +11,32 @@ const AsideMenu = () => {
         <List className={'aside'}>
 
             <ListItem disablePadding>
-                <ListItemButton onClick={()=>navigate('test1')}>
-                    <ListItemText primary="Test1" />
+                <ListItemButton onClick={()=>navigate('category')}>
+                    <ListItemText primary="Category" />
                 </ListItemButton>
             </ListItem>
 
             <ListItem disablePadding>
-                <ListItemButton onClick={()=>navigate('test2')}>
-                    <ListItemText primary="Test2" />
+                <ListItemButton onClick={() => navigate('manufacture')}>
+                    <ListItemText primary="Manufacture" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton onClick={() => navigate('client')}>
+                    <ListItemText primary="Client" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton onClick={() => navigate('product')}>
+                    <ListItemText primary="Product" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton onClick={() => navigate('order')}>
+                    <ListItemText primary="Order" />
                 </ListItemButton>
             </ListItem>
         </List>

@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Test1 = () => {
+const BezlepkinaOrder = () => {
     return (
         <div>
+            Order
         </div>
     );
 };
 
-export default Test1;
+export default BezlepkinaOrder;
