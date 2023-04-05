@@ -14,7 +14,7 @@ const Header = ({studentFio}:Props) => {
             </div>
 
             <div className={'header__group'}>
-                Группа - 210 {studentFio}
+                Группа - 210 Агеев Александр
             </div>
         </Typography>
     );

@@ -7,14 +7,34 @@ const AsideMenu = () => {
     const navigate = useNavigate();
     return (
         <List className={'aside'}>
-            <ListItem className={'asideListItem'} disablePadding>
-                <ListItemButton onClick={()=>navigate('test1')}>
-                    <ListItemText primary="Trash" />
+            <ListItem disablePadding>
+                <ListItemButton onClick={()=>navigate('Category')}>
+                    <ListItemText primary="Category" />
                 </ListItemButton>
             </ListItem>
-            <ListItem className={'asideListItem'} disablePadding>
-                <ListItemButton onClick={()=>navigate('test2')}>
-                    <ListItemText primary="Spam" />
+            <ListItem disablePadding>
+                <ListItemButton onClick={()=>navigate('Client')}>
+                    <ListItemText primary="Client" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton onClick={()=>navigate('Manufacturer')}>
+                    <ListItemText primary="Manufacturer" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton onClick={()=>navigate('Order')}>
+                    <ListItemText primary="Order" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton onClick={()=>navigate('IllegalProducts')}>
+                    <ListItemText primary="Illegal Products" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton onClick={()=>navigate('Purchase')}>
+                    <ListItemText primary="Purchase" />
                 </ListItemButton>
             </ListItem>
         </List>
