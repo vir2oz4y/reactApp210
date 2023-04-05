@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Category} from "./Models"
 
 const CategoryPage = () => {
+
     const [categoryList, setcategoryList] = useState<Category[]>([
         {
             id: 0,
-            name:"Категория 1"
+            name: "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1"
         },
         {
             id: 1,
-            name: "Категория 2"
+            name: "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2"
         }
     ])
-    return
-    (
+
+    return (
         <div>
             <h1>Category</h1>
             <div>
                 {categoryList.map((el, i) => <div>{el.name}</div>)}
-                </div>
+            </div>
         </div>
     );
 };
 
-export default Category;
+export default CategoryPage;
