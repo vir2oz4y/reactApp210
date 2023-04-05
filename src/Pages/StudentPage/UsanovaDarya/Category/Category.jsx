@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Test1 = () => {
+const Category = () => {
     return (
         <div>
+            
         </div>
     );
 };
 
-export default Test1;
+export default Category;
