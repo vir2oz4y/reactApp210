@@ -47,6 +47,13 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
+                    fio={'Агеев Александр Андреевич'}
+                    description={'матиз 5.5 v12'}
+                    imageSrc={'https://www.thedrive.com/content/2021/03/NRE-lead.jpg?quality=85'}
+                    navigateTo={'/Ageev'}
+                />
+
+                <StudentElement
                     fio={'Щеголева Екатерина Сергеевна'}
                     description={'студент0чка'}
                     imageSrc={'https://avatars.dzeninfra.ru/get-zen_doc/3414416/pub_611a2ee07e37175eb617dd99_611d057b945d7f24e36a526f/scale_1200'}
