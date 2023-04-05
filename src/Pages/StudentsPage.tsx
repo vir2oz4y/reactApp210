@@ -54,6 +54,13 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
+                    fio={'Филипушко Михаил Евгеньевич'}
+                    description={'бомбом'}
+                    imageSrc={'https://pibig.info/uploads/posts/2021-04/1619186380_19-pibig_info-p-animeshka-anime-krasivo-24.jpg'}
+                    navigateTo={'/filipushko'}
+                />
+
+                <StudentElement
                     fio={'Дьяков Данил Вадимович'}
                     description={'xiaomi remix edit v8'}
                     imageSrc={'https://a.d-cd.net/8gAAAgEDveA-1920.jpg'}
@@ -88,7 +95,6 @@ const StudentsPage = () => {
                     imageSrc={'https://wdorogu.ru/images/wp-content/uploads/2020/10/feda8bbd51ff950-scaled.jpg'}
                     navigateTo={'/Bezlepkina'}
                 />
-
 
             </Stack>
         </div>
