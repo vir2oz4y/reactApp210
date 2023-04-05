@@ -1,22 +1,21 @@
 import React from 'react';
 import Header from "../../../Components/Header/Header";
 import ContentBlock from "../../../Components/ContentBlock/ContentBlock";
-import "./PepelevSergeyPage.scss";
+import {Button, TextField} from "@mui/material";
 import AsideMenu from "./AsideMenu/AsideMenu";
 import {Outlet} from "react-router-dom";
 
-
-const PepelevSergeyPage = () => {
+const UsanovaDaryaPage = () => {
     return (
         <div>
-            <Header studentFio={'Пепелев Сергей'}/>
-
+            <Header studentFio={'Усанова Дарья'}/>
             <ContentBlock>
-                <AsideMenu/>
-                <Outlet/>
+                <AsideMenu></AsideMenu>
+                <Outlet />
             </ContentBlock>
+        
         </div>
     );
 };
 
-export default PepelevSergeyPage;
+export default UsanovaDaryaPage;
