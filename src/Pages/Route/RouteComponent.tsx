@@ -30,8 +30,12 @@ import {default as KiryutinTest1} from "../StudentPage/KiryutinVlad/test1/Test1"
 import {default as KiryutinTest2} from "../StudentPage/KiryutinVlad/test2/Test2";
 
 import OndyshevDmitryPage from "../StudentPage/OndyshevDmitry/OndyshevDmitryPage";
-import {default as OndyshevTest1} from '../StudentPage/OndyshevDmitry/Test1/Test1';
-import {default as OndyshevTest2} from "../StudentPage/OndyshevDmitry/Test2/Test2";
+import {default as OndyshevCategory} from '../StudentPage/OndyshevDmitry/Category/CategoryPage';
+import {default as OndyshevClient} from "../StudentPage/OndyshevDmitry/Client/Client";
+import {default as OndyshevManufacturer} from "../StudentPage/OndyshevDmitry/Manufacturer/Manufacturer";
+import {default as OndyshevOrder} from "../StudentPage/OndyshevDmitry/Order/Order";
+import {default as OndyshevProduct} from "../StudentPage/OndyshevDmitry/Product/Product";
+import {default as OndyshevPurchase} from "../StudentPage/OndyshevDmitry/Purchase/Purchase";
 
 import PepelevSergeyPage from "../StudentPage/PepelevSergey/PepelevSergeyPage";
 import {default as PepelevTest1} from "../StudentPage/PepelevSergey/test1/Test1";
@@ -98,8 +102,12 @@ const RouteComponent = () => {
                     
                   
                     <Route path={'ondyshev'} element={<OndyshevDmitryPage></OndyshevDmitryPage>}>
-                        <Route path={'test1'} element={<OndyshevTest1/>} />
-                        <Route path={'test2'} element={<OndyshevTest2/>} />
+                        <Route path={'category'} element={<OndyshevCategory/>} />
+                        <Route path={'client'} element={<OndyshevClient/>} />
+                        <Route path={'manufacturer'} element={<OndyshevManufacturer/>} />
+                        <Route path={'order'} element={<OndyshevOrder/>} />
+                        <Route path={'product'} element={<OndyshevProduct/>} />
+                        <Route path={'purchase'} element={<OndyshevPurchase/>} />
                     </Route>
 
                     <Route path={'filipushko'} element={<FilipushkoPage />}>
