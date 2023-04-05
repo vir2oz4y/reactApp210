@@ -70,6 +70,10 @@ import BezlepkinaOrder from '../StudentPage/Bezlepkina/Order/Order';
 import BezlepkinaProduct from '../StudentPage/Bezlepkina/Product/Product';
 import BezlepkinaManufacturer from '../StudentPage/Bezlepkina/Manufacturer/Manufacturer';
 
+import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
+import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
+import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
+
 
 
 const RouteComponent = () => {
@@ -117,6 +121,12 @@ const RouteComponent = () => {
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'category'} element={<CategoryPage/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
+                    </Route>
+
+
+                    <Route path={'dyakov'} element={<DyakovDanilPage />} >
+                        <Route path={'test1'} element={<DyakovTest1 />} />
+                        <Route path={'test2'} element={<DyakovTest2 />} />
                     </Route>
 
                     <Route path={'Ageev'} element={<AgeevAlexandrPage />} >

@@ -54,6 +54,13 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
+                    fio={'Дьяков Данил Вадимович'}
+                    description={'xiaomi remix edit v8'}
+                    imageSrc={'https://a.d-cd.net/8gAAAgEDveA-1920.jpg'}
+                    navigateTo={'/Dyakov'}
+                />
+
+                <StudentElement
                     fio={'Агеев Александр Андреевич'}
                     description={'матиз 5.5 v12'}
                     imageSrc={'https://www.thedrive.com/content/2021/03/NRE-lead.jpg?quality=85'}
