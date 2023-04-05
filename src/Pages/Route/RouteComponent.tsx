@@ -72,13 +72,15 @@ const RouteComponent = () => {
 
                     <Route path={'trubnikov'} element={<TrubnikovTimurPage/>} >
                         <Route path={'test1'} element={<TrubnikovTest1/>} />
-                        <Route path={'test2'} element={<TrubnikovTest2/>} />
+                        <Route path={'test2'} element={<TrubnikovTest2 />} />
+                        <Route path={'category'} element={<TrubnikovTest2 />} />
                     </Route>
                    
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'category'} element={<CategoryPage/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
+                   
 
                     <Route path={'Bezlepkina'} element={<BezlepkinaPage/>} >
                         <Route path={'Category'} element={<BezlepkinaCategory />} />
@@ -87,6 +89,7 @@ const RouteComponent = () => {
                         <Route path={'Order'} element={<BezlepkinaOrder />} />
                         <Route path={'Product'} element={<BezlepkinaProduct />} />
                     </Route>
+
                 </Route>
             </Routes>
         </HashRouter>
