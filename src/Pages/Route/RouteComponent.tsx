@@ -34,6 +34,14 @@ import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 import CategoryPage from "../StudentPage/KryuchkovNick/Category/CategoryPage";
 
+import ShchegolevaEkaterinaPage from '../StudentPage/ShchegolevaEkaterina/ShchegolevaEkaterinaPage';
+import ShchegolevaCategory from '../StudentPage/ShchegolevaEkaterina/Category/Category';
+import ShchegolevaClient from '../StudentPage/ShchegolevaEkaterina/Client/Client';
+import ShchegolevaManufacturer from '../StudentPage/ShchegolevaEkaterina/Manufacturer/Manufacturer';
+import ShchegolevaOrder from '../StudentPage/ShchegolevaEkaterina/Order/Order';
+import ShchegolevaProduct from '../StudentPage/ShchegolevaEkaterina/Product/Product';
+
+
 
 import UsanovaDaryaPage from "../StudentPage/UsanovaDarya/UsanovaDaryaPage";
 import { default as UsanovaTest1 } from "../StudentPage/UsanovaDarya/test1/Test1";
@@ -89,6 +97,14 @@ const RouteComponent = () => {
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
 
+                    <Route path={'Shchegoleva'} element={<ShchegolevaEkaterinaPage/>} >
+                        <Route path={'Category'} element={<ShchegolevaCategory />} />
+                        <Route path={'Client'} element={<ShchegolevaClient />} />
+                        <Route path={'Manufacturer'} element={<ShchegolevaManufacturer />} />
+                        <Route path={'Order'} element={<ShchegolevaOrder />} />
+                        <Route path={'Product'} element={<ShchegolevaProduct />} />
+                    </Route>
+
                     <Route path={'Usanova'} element={<UsanovaDaryaPage />} >
                         <Route path={'test1'} element={<UsanovaTest1 />} />
                         <Route path={'test2'} element={<UsanovaTest2 />} />
@@ -102,7 +118,6 @@ const RouteComponent = () => {
                         <Route path={'Order'} element={<BezlepkinaOrder />} />
                         <Route path={'Product'} element={<BezlepkinaProduct />} />
                     </Route>
-
 
                 </Route>
             </Routes>
