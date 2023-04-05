@@ -34,6 +34,14 @@ import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 import CategoryPage from "../StudentPage/KryuchkovNick/Category/CategoryPage";
 
+
+import UsanovaDaryaPage from "../StudentPage/UsanovaDarya/UsanovaDaryaPage";
+import { default as UsanovaTest1 } from "../StudentPage/UsanovaDarya/test1/Test1";
+import { default as UsanovaTest2 } from "../StudentPage/UsanovaDarya/test2/Test2";
+import { default as UsanovaCategory } from "../StudentPage/UsanovaDarya/Category/Category";
+
+
+
 import BezlepkinaPage from '../StudentPage/Bezlepkina/BezlepkinaPage';
 import BezlepkinaCategory from '../StudentPage/Bezlepkina/Category/Category';
 import BezlepkinaClient from '../StudentPage/Bezlepkina/Client/Client';
@@ -80,7 +88,12 @@ const RouteComponent = () => {
                         <Route path={'category'} element={<CategoryPage/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
-                   
+
+                    <Route path={'Usanova'} element={<UsanovaDaryaPage />} >
+                        <Route path={'test1'} element={<UsanovaTest1 />} />
+                        <Route path={'test2'} element={<UsanovaTest2 />} />
+                        <Route path={'Category'} element={<UsanovaCategory />} />
+                    </Route>
 
                     <Route path={'Bezlepkina'} element={<BezlepkinaPage/>} >
                         <Route path={'Category'} element={<BezlepkinaCategory />} />
@@ -89,6 +102,7 @@ const RouteComponent = () => {
                         <Route path={'Order'} element={<BezlepkinaOrder />} />
                         <Route path={'Product'} element={<BezlepkinaProduct />} />
                     </Route>
+
 
                 </Route>
             </Routes>
