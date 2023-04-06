@@ -72,7 +72,10 @@ import { default as UsanovaTest1 } from "../StudentPage/UsanovaDarya/test1/Test1
 import { default as UsanovaTest2 } from "../StudentPage/UsanovaDarya/test2/Test2";
 import { default as UsanovaCategory } from "../StudentPage/UsanovaDarya/Category/Category";
 
-
+import KurgankovPage from "../StudentPage/Kurgankov/KurgankovPage";
+import { default as KurgankovTest1 } from "../StudentPage/Kurgankov/test1/Test1";
+import { default as KurgankovTest2 } from "../StudentPage/Kurgankov/test2/Test2";
+import { default as KurgankovCategory } from "../StudentPage/Kurgankov/Category/Category";
 
 import BezlepkinaPage from '../StudentPage/Bezlepkina/BezlepkinaPage';
 import BezlepkinaCategory from '../StudentPage/Bezlepkina/Category/Category';

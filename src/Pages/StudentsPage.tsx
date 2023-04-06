@@ -24,7 +24,12 @@ const StudentsPage = () => {
                     imageSrc={'https://avatars.githubusercontent.com/u/52341158?v=4'}
                     navigateTo={'/ondyshev'}
                 />
-
+                <StudentElement
+                    fio={'Курганков Егор Юрьевич'}
+                    description={'Смотрящий'}
+                    imageSrc={'https://sun9-west.userapi.com/sun9-4/s/v1/ig1/tvc9lGwNTmgwGN5EtqZUd0SzCs9dVWv-fCbpW6BAPRYXD_Z-jt6LYKNJJMOjsR7d4oyeUhlI.jpg?size=1280x720&quality=96&type=album'}
+                    navigateTo={'/kurgankov'}
+                />
                 <StudentElement
                     fio={'Удалов Кирилл Андреевич'}
                     description={'Student'}
