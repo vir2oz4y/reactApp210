@@ -111,11 +111,11 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'filipushko'} element={<FilipushkoPage />}>
-                        <Route path={'test1'} element={<FilipushkoCategory />} />
-                        <Route path={'test2'} element={<FilipushkoClient />} />
-                        <Route path={'test2'} element={<FilipushkoManufacturer />} />
-                        <Route path={'test2'} element={<FilipushkoOrder />} />
-                        <Route path={'test2'} element={<FilipushkoProduct />} />
+                        <Route path={'category'} element={<FilipushkoCategory />} />
+                        <Route path={'client'} element={<FilipushkoClient />} />
+                        <Route path={'manufacturer'} element={<FilipushkoManufacturer />} />
+                        <Route path={'order'} element={<FilipushkoOrder />} />
+                        <Route path={'product'} element={<FilipushkoProduct />} />
                     </Route>
 
                     <Route path={'Udalov'} element={<UdalovKirillPage></UdalovKirillPage>}>
