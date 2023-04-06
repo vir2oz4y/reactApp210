@@ -95,6 +95,12 @@ const StudentsPage = () => {
                     imageSrc={'https://wdorogu.ru/images/wp-content/uploads/2020/10/feda8bbd51ff950-scaled.jpg'}
                     navigateTo={'/Bezlepkina'}
                 />
+                <StudentElement
+                    fio={'Наляйкин Константин Геннадьевич'}
+                    description={'Прелвис Если'}
+                    imageSrc={'https://fsd.multiurok.ru/html/2021/09/26/s_61509ef725f43/phpz2W8KL_Izuchaem-bukvu-K_html_142a1b95e5c45d63.png'}
+                    navigateTo={'/Nalyaykin'}
+                />
 
             </Stack>
         </div>
