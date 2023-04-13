@@ -5,6 +5,8 @@ import { Category } from './Models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ShchegolevaPopup from '../../../../Components/Shchegoleva/ShchegolevaPopup/ShchegolevaPopup';
+import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
+import EditCategoryPopup from "./Popups/EditCategoryPopup";
 
 const ShchegolevaCategory = () => {
     const [categoryList, setcategoryList] = useState<Category[]>([
@@ -20,7 +22,21 @@ const ShchegolevaCategory = () => {
     const onDeleteClick = (id:number) => {
         setcategoryList(prev=>prev.filter(el=>el.id !==id))
         }
+        const onEditClick=(id:number)=>{
+        const category=categoryList.find(el=>el.id===id)!;
+        setEditCategory(category);
+        }
+        const onCreate=(category:Category)=>{
+        setcategoryList(prev=>[...prev,category])
+        }
 
+        const onEdit=(category:Category)=>{
+        setcategoryList(prev=>{
+            const curcategory=prev.find(el=>el.id===category.id)!
+            curcategory.name=category.name
+            return[...prev]
+        })
+        }
     const columns: GridColDef[] = [
         {
             field: 'id',
@@ -35,7 +51,8 @@ const ShchegolevaCategory = () => {
             headerName:'',
             renderCell: (e: any) => {
                 return <div style={{ display: 'flex', gap: '1em' }}>
-                    <IconButton aria-label="edit">
+                    <IconButton aria-label="edit"
+                                onClick={()=>onEditClick(e.row.id)}>
                         <EditIcon />
                     </IconButton>
                     <IconButton onClick={()=>onDeleteClick(e.row.id)}
@@ -48,11 +65,24 @@ const ShchegolevaCategory = () => {
             
     ]
 
+    const [createPopupOpened, setCreatePopupOpened]=useState(false)
+
+    const [editCategory,setEditCategory]=useState<Category|null>(null)
     return (
         <div style={{ width: '100%' }}>
-            <ShchegolevaPopup title={'Category  create'} open={true} onClose={() => { }}>
-                123
-            </ShchegolevaPopup>
+
+            {createPopupOpened && <CreateCategoryPopup open={createPopupOpened}
+                                 onClose={()=>setCreatePopupOpened(false)}
+                                 onCreate={(newCategory)=>onCreate(newCategory)}/>}
+
+
+            {editCategory !== null && <EditCategoryPopup
+            open={editCategory!==null}
+            onClose={()=>setEditCategory(null)}
+            category={editCategory}
+            onEdit={(editCategory)=>onEdit(editCategory)}/>}
+
+
             <div style={{
                 display: 'flex', justifyContent: 'space-between', alignItems:'center'
             }}>
@@ -60,7 +90,8 @@ const ShchegolevaCategory = () => {
             <h1>Category</h1>
             </div>
             <div>
-                <Button variant="contained" >
+                <Button variant="contained"
+                onClick={()=>setCreatePopupOpened(true)}>
                     Add category
                 </Button>
             </div>

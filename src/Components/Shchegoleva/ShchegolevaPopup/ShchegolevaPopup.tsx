@@ -2,10 +2,13 @@ import { Button, Typography } from '@mui/material';
 import { Modal } from '@mui/material';
 import React from 'react';
 import "./ShchegolevaPopup.scss";
-type Props =
+
+export type IPopup={
+    open: boolean,
+    onClose: () => void;
+}
+type Props = IPopup&
     {
-        open: boolean,
-        onClose: () => void;
         children: any,
         title:string
     }
