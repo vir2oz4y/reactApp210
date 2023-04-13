@@ -2,9 +2,13 @@ import React from 'react';
 import {Modal, Typography} from "@mui/material";
 import "./PepelevPopup.scss";
 
-type Props = {
+export type IPopup = {
     open: boolean,
     onClose: ()=> void;
+}
+
+type Props = IPopup & {
+
     children:any
     title: string
 }
