@@ -7,9 +7,14 @@ import MainPage from "../MainPage";
 import StudentsPage from "../StudentsPage";
 
 
-import TrubnikovTimurPage from "../StudentPage/TrubnikovTimur/TrubnikovTimurPage";
-import {default as TrubnikovTest2} from "../StudentPage/TrubnikovTimur/Test2/Test2";
-import { default as TrubnikovTest1 } from "../StudentPage/TrubnikovTimur/Test1/Test1";
+
+import TrubnikovTimurPage from'../StudentPage/TrubnikovTimur/TrubnikovTimurPage';
+import TrubnikovCategory from '../StudentPage/TrubnikovTimur/Category/Category';
+import TrubnikovClient from '../StudentPage/TrubnikovTimur/Client/Client';
+import TrubnikovManufacturer from '../StudentPage/TrubnikovTimur/Manufacturer/Manufacturer';
+import TrubnikovOrder from '../StudentPage/TrubnikovTimur/Order/Order';
+import TrubnikovProduct from '../StudentPage/TrubnikovTimur/Product/Product';
+
 
 import FilipushkoPage from "../StudentPage/filipushko/FilipushkoPage";
 import { default as FilipushkoCategory } from "../StudentPage/filipushko/Category/CategoryPage";
@@ -136,9 +141,12 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'trubnikov'} element={<TrubnikovTimurPage/>} >
-                        <Route path={'test1'} element={<TrubnikovTest1/>} />
-                        <Route path={'test2'} element={<TrubnikovTest2 />} />
-                        <Route path={'category'} element={<TrubnikovTest2 />} />
+                        <Route path={'Category'} element={<TrubnikovCategory/>}/>
+                        <Route path={'Client'} element={<TrubnikovClient />}/>
+                        <Route path={'Manufacturer'} element={<TrubnikovManufacturer/>} />
+                        <Route path={'Order'} element={<TrubnikovOrder/>} />
+                        <Route path={'Product'} element={<TrubnikovProduct/>}/>
+
                     </Route>
                    
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Test2 = () => {
+const TrubnikovOrder = () => {
     return (
         <div>
-            dsa
+            Order
         </div>
     );
 };
 
-export default Test2;
+export default TrubnikovOrder;
