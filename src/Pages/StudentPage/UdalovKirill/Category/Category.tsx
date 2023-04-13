@@ -6,6 +6,8 @@ import { Category } from "./Models"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import UdalovPopup from '../../../../Components/Udalov/UdalovPopup/UdalovPopup';
+import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
+import EditCategoryPopup from "./Popups/EditCategoryPopup";
 
 const CategoryPage = () => {
 
@@ -24,13 +26,32 @@ const CategoryPage = () => {
         setCategoryList(prev => prev.filter(el => el.id !== id))
     }
 
+    const onEditClick = (id:number) => {
+        const category = categoryList.find(el => el.id === id)!;
+        setEditCategory(category)
+    }
+
+    const onCreate = (category:Category) => {
+        setCategoryList(prev => [...prev, category])
+    }
+
+    const onEdit = (category:Category) => {
+        setCategoryList(prev => {
+            const curCategory = prev.find(el => el.id === category.id)!;
+
+            curCategory.name = category.name;
+
+            return[...prev]
+        })
+    }
+
     const columns: GridColDef[] = [
         {
             field: 'id',
-            headerName: 'id'
+            headerName: 'Id'
         },
         {
-            field: 'Name',
+            field: 'name',
             headerName: 'Name'
         },
         {
@@ -38,7 +59,7 @@ const CategoryPage = () => {
             headerName: '',
             renderCell: (e: any) => {
                 return <div style={{ display: 'flex', gap: '1em' }}>
-                    <IconButton aria-label="edit">
+                    <IconButton aria-label="edit" onClick={() => onEditClick(e.row.id)}>
                         <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => onDeleteClick(e.row.id)} aria-label="delete">
@@ -51,14 +72,25 @@ const CategoryPage = () => {
 
     ]
 
+    const [createPopupOpened, setCreatePopupOpened] = useState(false)
+
+    const [editCategory, setEditCategory] = useState<Category|null>(null)
+
     return (
         <div style={{ width: '100%' }}>
 
-            <UdalovPopup title='Category' open={true} onClose={() => { }}>
-                <div>
-                    123123
-                </div>
-            </UdalovPopup>
+
+            {createPopupOpened && <CreateCategoryPopup
+                open = {createPopupOpened}
+                onClose = {() => setCreatePopupOpened(false)}
+                onCreate={(newCategory:Category) => onCreate(newCategory)}/>}
+
+            {editCategory !== null && <EditCategoryPopup
+                open = {editCategory !== null}
+                onClose={() => setEditCategory(null)}
+                category = {editCategory}
+                onEdit={(editCategory) => onEdit(editCategory)}/>}
+
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -66,7 +98,7 @@ const CategoryPage = () => {
             }}>
             <h1>Category</h1>
             <div>
-                <Button color={'primary'} variant={'contained'}>
+                <Button color={'primary'} variant={'contained'} onClick={() => setCreatePopupOpened(true)}>
                     Add Category
                 </Button>
               </div>

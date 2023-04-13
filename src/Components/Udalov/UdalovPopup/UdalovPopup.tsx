@@ -2,13 +2,16 @@ import { Button, Modal, Typography } from '@mui/material';
 import React from 'react';
 import "./UdalovPopup.scss"
 
-
-type Props = {
+export type IPopup = {
     open: boolean,
     onClose: () => void;
-    children: any,
-    title: string,
 }
+
+type Props = IPopup & {
+    children: any,
+    title: string
+}
+
 
 const UdalovPopup = ({ open, onClose, children, title } : Props) => {
 
