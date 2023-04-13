@@ -2,9 +2,13 @@ import { Button, Modal, Typography } from '@mui/material';
 import React from 'react';
 import "./filipushkoPopup.scss";
 
-type Props = {
+export type IPopup={
     open: boolean,
     onClose: () => void;
+}
+
+type Props =IPopup & {
+
     children: any;
     title: string;
 }
