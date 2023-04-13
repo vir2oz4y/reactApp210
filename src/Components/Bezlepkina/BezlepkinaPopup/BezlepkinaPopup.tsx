@@ -3,9 +3,12 @@ import { Modal } from '@mui/material';
 import React from 'react';
 import "./BezlepkinaPopup.scss"
 
-type Props = {
+export type IPopup = {
     open: boolean,
-    onClose: () => void;
+    onClose: ()=> void;
+}
+
+type Props = IPopup &{
     children: any,
     title: string
 }

@@ -1,13 +1,14 @@
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton/IconButton';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React, { useState } from 'react';
-import { Category } from './models'
+import {DataGrid, GridColDef} from '@mui/x-data-grid';
+import React, {useState} from 'react';
+import {Category} from './models'
 import EditIcon from '@mui/icons-material/Edit';
 import SendIcon from '@mui/icons-material/Send';
 import BezlepkinaPopup from '../../../../Components/Bezlepkina/BezlepkinaPopup/BezlepkinaPopup';
-import { Button } from '@mui/material';
+import {Button} from '@mui/material';
+import CreateCategoryPopApp from "./PopApps/CreateCategoryPopApp";
+import EditCategoryPopApp from "./PopApps/AdditCategoryPopApp";
 
 const BezlepkinaCategory = () => {
 
@@ -27,10 +28,14 @@ const BezlepkinaCategory = () => {
             prev.filter(el => el.id !== id))
     }
 
+    const onCreate = (categoryList: Category) => {
+        setcategoryList(prevState => [...prevState, categoryList])
+    }
+
     const columns: GridColDef[] = [{
-            field: 'id',
-            headerName: 'Id'
-        },
+        field: 'id',
+        headerName: 'Id'
+    },
         {
             field: 'name',
             headerName: 'Name'
@@ -39,37 +44,69 @@ const BezlepkinaCategory = () => {
             field: '',
             headerName: '',
             renderCell: (e: any) => {
-                return <div style={{ display: 'flex', gap: '1em' }}>
+                return <div style={{display: 'flex', gap: '1em'}}>
                     <IconButton aria-label="delete"
-                        onClick={() => onDeleteClick(e.row.id)}>
-                        <DeleteIcon />
+                                onClick={() => onDeleteClick(e.row.id)}>
+                        <DeleteIcon/>
                     </IconButton>
 
-                    <IconButton aria-label="edit">
-                        <EditIcon />
+                    <IconButton
+                        onClick={() => onEditClick(e.row.id)}
+                        aria-label="edit">
+                        <EditIcon/>
                     </IconButton>
                 </div>
             }
         }
     ]
+    const [creatrPopupOpened, setCreatePopupOpened] = useState(false)
+    const [editCategory, setEditCategory] = useState<Category | null>(null)
+
+
+    const onEditClick = (id: number) => {
+        const category = categoryList.find(el => el.id === id)!;
+        setEditCategory(category)
+    }
+    const onEdit = (category: Category) => {
+        setcategoryList(prev => {
+            const curCategory = prev.find(el => el.id === category.id)!;
+            curCategory.name=category.name;
+            return [...prev]
+        })
+    }
+
 
     return (
-        <div style={{ width: '100%' }}>
-            <BezlepkinaPopup title={'category create'} open={true} onClose={() => { }}>
-                </BezlepkinaPopup>
-            <div style={{display:'flex',
-                justifyContent:'space-between',
-                alignItems:'center'
+        <div style={{width: '100%'}}>
+
+            {creatrPopupOpened && <CreateCategoryPopApp
+                open={creatrPopupOpened}
+                onClose={() => setCreatePopupOpened(false)}
+                onCreate={(cat) => onCreate(cat)}
+            />}
+
+            {editCategory != null && <EditCategoryPopApp
+                open={editCategory != null}
+                onClose={() => setEditCategory(null)}
+                category={editCategory}
+                onEdit={(EditCategory) => onEdit(EditCategory)}
+            />}
+
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
             }}>
-                 <h1>Category </h1>
+                <h1>Category </h1>
             </div>
-            
+
             <div>
-                <Button variant="contained">
+                <Button variant="contained"
+                        onClick={() => setCreatePopupOpened(true)}>
                     Add
-                    </Button>
-          </div>
-            <div style={{ height: '80vh', width: '100%' }}>
+                </Button>
+            </div>
+            <div style={{height: '80vh', width: '100%'}}>
                 <DataGrid
                     rows={categoryList}
                     columns={columns}
@@ -84,10 +121,11 @@ const BezlepkinaCategory = () => {
                     checkboxSelection
                     disableRowSelectionOnClick
                 />
-         
-        </div>
+
+            </div>
         </div>
     );
-};
+}
+
 
 export default BezlepkinaCategory;
