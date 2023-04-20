@@ -3,6 +3,7 @@ import ShchegolevaPopup, {IPopup} from "../../../../../Components/Shchegoleva/Sh
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Category } from '../Models';
+import { shchegolevaAxios } from '../../ShchegolevaEkaterinaPage';
 type Props=IPopup & {
     onEdit:(newCategory:Category)=>void
     category:Category;
@@ -10,8 +11,12 @@ type Props=IPopup & {
 const EditCategoryPopup = ({open, onClose,category, onEdit}:Props) => {
     const [categoryEdit, setCategoryEdit]=useState(category)
 
-    const onEditClick=()=>{
-        onEdit(categoryEdit);
+    const onEditClick = () => {
+        shchegolevaAxios.patch('https://canstudy.ru/orderapi/category', { item: categoryEdit })
+            .then(() => {
+            onEdit(categoryEdit);
+            })
+        
         onClose();
     }
     return (

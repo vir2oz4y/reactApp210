@@ -1,15 +1,43 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ShchegolevaPopup, {IPopup} from "../../../../../Components/Shchegoleva/ShchegolevaPopup/ShchegolevaPopup";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Category } from '../Models';
+import axios from 'axios';
+import { shchegolevaAxios } from '../../ShchegolevaEkaterinaPage';
 type Props=IPopup & {
     onCreate:(newCategory:Category)=>void
 }
-const CreateCategoryPopup = ({open, onClose,onCreate}:Props) => {
-    const [categoryName, setCategoryName]=useState('')
+const CreateCategoryPopup = ({ open, onClose, onCreate }: Props) => {
+    
+    const [categoryName, setCategoryName] = useState('')
+    //const [authToken, setAuthToken] = useState('');
+
+    //const doLogin = () => {
+    //    axios.post<{ authToken: string }>('https://canstudy.ru/orderapi/user/login', {
+    //        identifier: '993D0C6A-3CFB-456C-9BA5-ADD5BC9FB80D'
+    //    })
+    //        .then(res => {
+    //            setAuthToken(res.data.authToken)
+    //        })
+    //}
+
+    //useEffect(() => {
+    //    doLogin();
+    //}, [])
+
+    const createCategory = () => {
+        shchegolevaAxios.post<{ item:Category }>('https://canstudy.ru/orderapi/category',
+        {
+            name:categoryName
+        })
+            .then(res => {
+                onCreate(res.data.item)
+            })
+    }
+
     const onCreateClick=()=>{
-        onCreate({id:Math.random(), name:categoryName})
+        createCategory();
         onClose();
     }
     return (

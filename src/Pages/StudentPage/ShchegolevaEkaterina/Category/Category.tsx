@@ -1,31 +1,58 @@
 import { Button, IconButton } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Category } from './Models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ShchegolevaPopup from '../../../../Components/Shchegoleva/ShchegolevaPopup/ShchegolevaPopup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import axios from 'axios';
+import { shchegolevaAxios } from '../ShchegolevaEkaterinaPage';
 
 const ShchegolevaCategory = () => {
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: "Category 1"
-        },
-        {
-            id: 1,
-            name: "Category 2"
-        },
-    ])
-    const onDeleteClick = (id:number) => {
-        setcategoryList(prev=>prev.filter(el=>el.id !==id))
+    const [authToken, setAuthToken] = useState('');
+
+    const [categoryList, setcategoryList] = useState<Category[]>([])
+
+    //const doLogin = () => {
+    //    axios.post<{authToken:string}>('https://canstudy.ru/orderapi/user/login', {
+    //        identifier: '993D0C6A-3CFB-456C-9BA5-ADD5BC9FB80D'
+    //    })
+    //        .then(res => {
+    //            setAuthToken(res.data.authToken)
+    //        })
+    //}
+
+    const getCategories = () => {
+        shchegolevaAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+            .then(res => {
+                setcategoryList(res.data.items)
+            })
+    }
+
+    //useEffect(() => {
+    //    doLogin();
+    //},[])
+
+    useEffect(() => {
+            getCategories();
+    },[])
+
+   
+    const onDeleteClick = (id: number) => {
+        shchegolevaAxios.delete(`https://canstudy.ru/orderapi/category/` + id)
+            .then(() => {
+                setcategoryList(prev=>prev.filter(el=>el.id !==id))
+            })
+        
         }
-        const onEditClick=(id:number)=>{
-        const category=categoryList.find(el=>el.id===id)!;
-        setEditCategory(category);
-        }
+    const onEditClick = (id: number) => {
+            const category=categoryList.find(el=>el.id===id)!;
+            setEditCategory(category);
+    }
+
+
         const onCreate=(category:Category)=>{
         setcategoryList(prev=>[...prev,category])
         }
