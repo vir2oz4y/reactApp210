@@ -1,6 +1,6 @@
 import { Button, IconButton } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Category } from "./Models"
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,22 +8,54 @@ import EditIcon from '@mui/icons-material/Edit';
 import UdalovPopup from '../../../../Components/Udalov/UdalovPopup/UdalovPopup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import axios from 'axios';
+import { udalovAxios } from '../UdalovKirillPage';
 
 const CategoryPage = () => {
 
-    const [categoryList, setCategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: "Category 1"
-        },
-        {
-            id: 1,
-            name: "Category 2"
-        },
-    ])
+
+    const [categoryList, setCategoryList] = useState<Category[]>([])
+
+/*    const [authToken, setAuthToken] = useState('');*/
+
+
+    const getCategories = () => {
+        udalovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+            .then(res => {
+                setCategoryList(res.data.items);
+            })
+    }
+
+/*    const doLogin = () => {
+        axios.post<{ authToken: string }>('https://canstudy.ru/orderapi/user/login', {
+            identifier: '96CBFEBE-D484-433C-B511-ACFDCE2C57D0'
+        })
+            .then(res => {
+                setAuthToken(res.data.authToken)
+            })
+    }
+
+    useEffect(() => {
+        doLogin();
+    }, [])*/
+
+
+    useEffect(() => {
+       getCategories();
+    }, [])
+
+
+    const deleteCategory = () => {
+       
+    }
+
 
     const onDeleteClick = (id: number) => {
-        setCategoryList(prev => prev.filter(el => el.id !== id))
+        udalovAxios.delete(`https://canstudy.ru/orderapi/category/${id}`,
+        )
+            .then(res => {
+                setCategoryList(prev => prev.filter(el => el.id !== id))
+            })
     }
 
     const onEditClick = (id:number) => {
