@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import UdalovPopup, {IPopup} from "../../../../../Components/Udalov/UdalovPopup/UdalovPopup";
 import {Button, TextField} from "@mui/material";
 import {Category} from "../Models";
+import { udalovAxios } from '../../UdalovKirillPage';
 
 type Props = IPopup & {
     onEdit:(newCategory:Category) => void;
@@ -14,7 +15,14 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}:Props) => {
 
 
     const onEditClick = () => {
-         onEdit(categoryEdit)
+        udalovAxios.patch(`https://canstudy.ru/orderapi/category`,
+            {
+                item: categoryEdit
+            }
+        )
+            .then(res => {
+                onEdit(categoryEdit)
+            })
          onClose()
     }
 
