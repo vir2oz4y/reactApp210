@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import KryuchkovPopup, {IPopup} from "../../../../../Components/Kryuchkov/KryuchkovPopup/KryuchkovPopup";
 import {Button, TextField} from "@mui/material";
 import {Category} from "../models";
+import axios from 'axios';
+import { kryuchkovAxios } from '../../KryuchkovNickPage';
 
 type Props = IPopup & {
     onCreate:(newCategory:Category)=>void;
@@ -9,13 +11,21 @@ type Props = IPopup & {
 
 const CreateCategoryPopup = ({open, onClose, onCreate}: Props) => {
 
+    const createCategory = () => {
+        kryuchkovAxios.post<{ item:Category }>('https://canstudy.ru/orderapi/category',
+            {
+                name:categoryName
+            })
+            .then(res => {
+                onCreate(res.data.item)
+            })
+    }
+
+
     const [categoryName, setCategoryName] = useState('')
 
     const onCreateClick = () =>{
-        onCreate({
-            id:Math.random(),
-            name:categoryName
-        });
+        createCategory();
 
         onClose();
     }

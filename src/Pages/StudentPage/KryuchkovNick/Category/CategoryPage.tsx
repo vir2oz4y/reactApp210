@@ -1,27 +1,32 @@
 import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Category} from './models';
 //import Category from "./models";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import KryuchkovNickPage from '../KryuchkovNickPage';
+import KryuchkovNickPage, { kryuchkovAxios } from '../KryuchkovNickPage';
 import KryuchkovPopup from '../../../../Components/Kryuchkov/KryuchkovPopup/KryuchkovPopup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import axios from 'axios';
 
 const CategoryPage = () => {
 
-    const [categoryList, setCategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: "Category 1"
-        },
-        {
-            id: 1,
-            name: "Category 2"
-        },
-    ])
+    const [categoryList, setCategoryList] = useState<Category[]>([])
+
+    const getCategories = () => {
+        kryuchkovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+            .then(res => {
+                setCategoryList(res.data.items);
+            })
+    }
+
+
+    useEffect(() => {
+        getCategories();
+    }, [])
+
 
 
     const onDeleteClick = (id: number) => {
