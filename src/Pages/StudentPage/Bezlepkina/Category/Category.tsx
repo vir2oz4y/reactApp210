@@ -1,7 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton/IconButton';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Category} from './models'
 import EditIcon from '@mui/icons-material/Edit';
 import SendIcon from '@mui/icons-material/Send';
@@ -9,19 +9,30 @@ import BezlepkinaPopup from '../../../../Components/Bezlepkina/BezlepkinaPopup/B
 import {Button} from '@mui/material';
 import CreateCategoryPopApp from "./PopApps/CreateCategoryPopApp";
 import EditCategoryPopApp from "./PopApps/AdditCategoryPopApp";
+import axios from 'axios';
+
 
 const BezlepkinaCategory = () => {
+  const [authToken, setAuthToken] = useState('');
 
     const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: "Category 1"
-        },
-        {
-            id: 1,
-            name: "Category 2"
-        },
+        
     ])
+    
+    const getCategory = () => {
+        axios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/user/login', {
+            headers: {
+                Authorization: 'Bearer ' + authToken
+            }
+        })
+            .then(res => {
+                setcategoryList(res.data.items)
+            })
+    }
+    useEffect(() => {
+            getCategory();
+    },[])
+ 
 
     const onDeleteClick = (id: number) => {
         setcategoryList(prev =>

@@ -3,15 +3,37 @@ import BezlepkinaPopup, {IPopup} from "../../../../../Components/Bezlepkina/Bezl
 import {Button, Input} from '@mui/material';
 import TextField from "@mui/material/TextField";
 import { Category } from '../models';
+import axios from 'axios';
+import { strict } from 'assert';
+import { useEffect } from 'react';
+import { BezlepkinaAxios } from '../../BezlepkinaPage';
 
 type Props=IPopup &{
     onCreate:(newCategory:Category)=>void;
 }
 const CreateCategoryPopApp = ({open, onClose,onCreate}:Props) => {
-    const [categoryName,setCategoryName]=useState('')
+const [categoryName, setCategoryName] = useState('')
+
+const [authToken, setAuthToken] = useState('');
+
+    const CreateCategory = () => {
+        BezlepkinaAxios.post<{ item:Category}>('https://canstudy.ru/orderapi/user/login',
+            {
+                name: categoryName
+            },
+            {
+                headers:
+                {
+                    Aurthorization: 'Bearer '+authToken
+                }
+            })
+                .then(res => {
+                    onCreate(res.data.item)
+                })
+    }
 
     const onCreateClick=()=>{
-        onCreate({id:Math.random(),name:categoryName})
+        CreateCategory()
         onClose()
     }
     return (
