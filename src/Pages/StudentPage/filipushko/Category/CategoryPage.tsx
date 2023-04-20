@@ -1,25 +1,45 @@
 import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Category} from "./Models"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import FilipushkoPopup from '../../../../Components/filipushko/filipushkoPopup/filipushkoPopup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import axios from 'axios';
+import { filipushkoAxios } from '../FilipushkoPage';
 
 const CategoryPage = () => {
+    const [categoryList, setcategoryList] = useState<Category[]>([])
+/*    const [ authToken, setAuthToken ] = useState('');
+    const doLogin = () => {
+        axios.post < { authToken:string }>('https://canstudy.ru/orderapi/user/login', {
+            identifier:'05DA6784-075D-4859-9B30-49457DC210EF'
+        })
+            .then(res => {
+                setAuthToken(res.data.authToken)
+            }) 
+    }
+    useEffect(() => {
+        doLogin();
+    }, [])*/
+    const getCategories = () => {
+        filipushkoAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/Category/list')
+            .then(res => {
+                setcategoryList(res.data.items);
+            })
+    }
 
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: "category 1"
-        },
-        {
-            id: 1,
-            name: "category 2"
-        }
-    ])
+
+
+    useEffect(() => {
+        
+            getCategories();
+        
+    },[])
+
+    
     const onDeleteClick = (id: number) => {
         setcategoryList(prev =>
             prev.filter(el => el.id !== id)
