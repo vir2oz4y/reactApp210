@@ -26,6 +26,13 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
+                    fio={'Симаков Матвей Александрович'}
+                    description={'fast einjahriger JS-Softwareentwickler'}
+                    imageSrc={'https://pbs.twimg.com/media/FhLUobbWIAEJIXO?format=jpg'}
+                    navigateTo={'/simakov'}
+                />
+
+                <StudentElement
                     fio={'Удалов Кирилл Андреевич'}
                     description={'Student'}
                     imageSrc={'https://avatars.mds.yandex.net/i?id=5f3038bed55e1b47442bc09b643fd0707af43d58-8287805-images-thumbs&n=13'}

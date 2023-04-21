@@ -37,6 +37,14 @@ import {default as OndyshevOrder} from "../StudentPage/OndyshevDmitry/Order/Orde
 import {default as OndyshevProduct} from "../StudentPage/OndyshevDmitry/Product/Product";
 import {default as OndyshevPurchase} from "../StudentPage/OndyshevDmitry/Purchase/Purchase";
 
+import SimakovMatveyPage from "../StudentPage/SimakovMatvey/SimakovMatveyPage";
+import {default as SimakovCategory} from '../StudentPage/SimakovMatvey/Category/CategoryPage';
+import {default as SimakovClient} from "../StudentPage/SimakovMatvey/Client/Client";
+import {default as SimakovManufacturer} from "../StudentPage/SimakovMatvey/Manufacturer/Manufacturer";
+import {default as SimakovOrder} from "../StudentPage/SimakovMatvey/Order/Order";
+import {default as SimakovProduct} from "../StudentPage/SimakovMatvey/Product/Product";
+import {default as SimakovPurchase} from "../StudentPage/SimakovMatvey/Purchase/Purchase";
+
 import PepelevSergeyPage from "../StudentPage/PepelevSergey/PepelevSergeyPage";
 import {default as PepelevTest1} from "../StudentPage/PepelevSergey/test1/Test1";
 import {default as PepelevTest2} from "../StudentPage/PepelevSergey/test2/Test2";
@@ -108,6 +116,15 @@ const RouteComponent = () => {
                         <Route path={'order'} element={<OndyshevOrder/>} />
                         <Route path={'product'} element={<OndyshevProduct/>} />
                         <Route path={'purchase'} element={<OndyshevPurchase/>} />
+                    </Route>
+
+                    <Route path={'simakov'} element={<SimakovMatveyPage></SimakovMatveyPage>}>
+                        <Route path={'category'} element={<SimakovCategory/>} />
+                        <Route path={'client'} element={<SimakovClient/>} />
+                        <Route path={'manufacturer'} element={<SimakovManufacturer/>} />
+                        <Route path={'order'} element={<SimakovOrder/>} />
+                        <Route path={'product'} element={<SimakovProduct/>} />
+                        <Route path={'purchase'} element={<SimakovPurchase/>} />
                     </Route>
 
                     <Route path={'filipushko'} element={<FilipushkoPage />}>
