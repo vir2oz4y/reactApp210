@@ -17,7 +17,7 @@ const CategoryPage = () => {
 		<div>
 			<h1>Category page</h1>
 			<div>
-				{categoryList.map((el, i) => (
+				{categoryList.map((el) => (
 					<div>{el.name}</div>
 				))}
 			</div>
