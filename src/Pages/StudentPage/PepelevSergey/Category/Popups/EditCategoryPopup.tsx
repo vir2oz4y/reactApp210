@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PepelevPopup, {IPopup} from "../../../../../Components/Pepelev/PepelevPopup/PepelevPopup";
 import {Button, TextField} from "@mui/material";
 import {Category} from "../model";
+import axios from "axios/index";
+import {pepelevAxios} from "../../PepelevSergeyPage"
 
 type Props = IPopup & {
     onEdit:(newCategory:Category)=>void;
@@ -9,9 +11,23 @@ type Props = IPopup & {
 }
 const EditCategoryPopup = ({open, onClose, category, onEdit}:Props) => {
 
+    // TODO:
+    const editCategory = () => {
+        pepelevAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
+            {
+                id:category.id,
+                name:category.name
+            })
+            .then(res => {
+                onEdit(res.data.item)
+            })
+    }
+
     const [categoryEdit, setCategoryEdit] = useState(category)
-    const onEditClick = () =>{
-        onEdit(categoryEdit);
+
+    const onEditClick = () => {
+        editCategory();
+
         onClose();
     }
     return (
