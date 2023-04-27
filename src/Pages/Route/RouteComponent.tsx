@@ -84,6 +84,7 @@ import BezlepkinaManufacturer from '../StudentPage/Bezlepkina/Manufacturer/Manuf
 import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
 import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
 import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
+import ManufacturePage from "../StudentPage/KryuchkovNick/Manufacture/ManufacturePage";
 
 
 
@@ -143,6 +144,7 @@ const RouteComponent = () => {
                    
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'category'} element={<CategoryPage/>}/>
+                        <Route path={'manufacture'} element={<ManufacturePage/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
 

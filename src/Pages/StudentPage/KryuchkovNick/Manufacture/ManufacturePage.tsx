@@ -1,57 +1,57 @@
 import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import React, {useEffect, useState} from 'react';
-import {Category} from './models';
-//import Category from "./models";
+//import manufacture from "./models";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import KryuchkovNickPage, { kryuchkovAxios } from '../KryuchkovNickPage';
-import KryuchkovPopup from '../../../../Components/Kryuchkov/KryuchkovPopup/KryuchkovPopup';
-import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
-import EditCategoryPopup from "./Popups/EditCategoryPopup";
-import axios from 'axios';
+import {kryuchkovAxios} from '../KryuchkovNickPage';
+import {Manufacture} from "./models";
+import CreateManufacturePopup from "./Popups/CreateManufacturePopup";
+import EditManufacturePopup from "./Popups/EditManufacturePopup";
 
-const CategoryPage = () => {
+const ManufacturePage = () => {
 
-    const [categoryList, setCategoryList] = useState<Category[]>([])
+    const [manufactureList, setManufactureList] = useState<Manufacture[]>([])
 
-    const getCategories = () => {
-        kryuchkovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+    const getManufacturies = () => {
+        kryuchkovAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
             .then(res => {
-                setCategoryList(res.data.items);
+                setManufactureList(res.data.items);
             })
     }
 
 
     useEffect(() => {
-        getCategories();
+        getManufacturies();
     }, [])
 
 
-
     const onDeleteClick = (id: number) => {
-        kryuchkovAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
+
+        kryuchkovAxios.delete(`https://canstudy.ru/orderapi/manufacturer/${id}`)
             .then(res => {
-                setCategoryList(prev =>
+                setManufactureList(prev =>
                     prev.filter(el => el.id !== id)
                 )
             })
     }
 
-    const onEditClick = (id:number) =>{
-        const category = categoryList.find(el=>el.id === id)!;
-        setEditCategory(category)
+    const onEditClick = (id: number) => {
+        const manufacture = manufactureList.find(el => el.id === id)!;
+        setEditmanufacture(manufacture)
     }
 
-    const onCreate = (category: Category) => {
-        setCategoryList(prev => [...prev, category])
+    const onCreate = (manufacture: Manufacture) => {
+        setManufactureList(prev => [...prev, manufacture])
     }
 
-    const onEdit = (category: Category) =>{
-        setCategoryList(prev=>{
-            const curCategory = prev.find(el=>el.id === category.id)!;
+    const onEdit = (manufacture: Manufacture) => {
+        setManufactureList(prev => {
+            const curmanufacture = prev.find(el => el.id === manufacture.id)!;
 
-            curCategory.name = category.name;
+            curmanufacture.name = manufacture.name;
+            curmanufacture.country = manufacture.country;
+            curmanufacture.city = manufacture.city;
 
             return [...prev]
         })
@@ -64,8 +64,18 @@ const CategoryPage = () => {
         },
         {
             field: 'name',
-            headerName: 'Name',
-            flex:1
+            headerName: 'Название',
+            flex: 1
+        },
+        {
+            field: 'country',
+            headerName: 'Страна',
+            flex: 1
+        },
+        {
+            field: 'city',
+            headerName: 'Город',
+            flex: 1
         },
         {
             field: '',
@@ -75,7 +85,7 @@ const CategoryPage = () => {
 
                     <IconButton
                         aria-label="edit"
-                        onClick={()=> onEditClick(e.row.id)}
+                        onClick={() => onEditClick(e.row.id)}
                     >
                         <EditIcon/>
                     </IconButton>
@@ -93,22 +103,22 @@ const CategoryPage = () => {
 
     const [createPopupOpened, setCreatePopupOpened] = useState(false)
 
-    const [editCategory, setEditCategory] = useState<Category | null>(null)
+    const [editmanufacture, setEditmanufacture] = useState<Manufacture | null>(null)
 
     return (
         <div style={{width: '100%'}}>
 
-            {createPopupOpened && <CreateCategoryPopup
+            {createPopupOpened && <CreateManufacturePopup
                 open={createPopupOpened}
                 onClose={() => setCreatePopupOpened(false)}
-                onCreate={(newCategory) => onCreate(newCategory)}
+                onCreate={(newManufacture) => onCreate(newManufacture)}
             />}
 
-            {editCategory !== null && <EditCategoryPopup
-                open={editCategory !== null}
-                onClose={() => setEditCategory(null)}
-                category={editCategory}
-                onEdit={(editCategory) => onEdit(editCategory)}
+            {editmanufacture !== null && <EditManufacturePopup
+                open={editmanufacture !== null}
+                onClose={() => setEditmanufacture(null)}
+                Manufacture={editmanufacture}
+                onEdit={(editmanufacture) => onEdit(editmanufacture)}
             />}
 
             <div style={{
@@ -117,7 +127,7 @@ const CategoryPage = () => {
                 alignItems: 'center'
             }}>
 
-                <h1>Category</h1>
+                <h1>manufacture</h1>
 
                 <div>
                     <Button
@@ -125,7 +135,7 @@ const CategoryPage = () => {
                         variant={'contained'}
                         onClick={() => setCreatePopupOpened(true)}
                     >
-                        Add Category
+                        Add manufacture
                     </Button>
 
                 </div>
@@ -134,7 +144,7 @@ const CategoryPage = () => {
 
             <div style={{height: '80vh', width: '100%'}}>
                 <DataGrid
-                    rows={categoryList}
+                    rows={manufactureList}
                     columns={columns}
                     initialState={{
                         pagination: {
@@ -152,4 +162,4 @@ const CategoryPage = () => {
     );
 };
 
-export default CategoryPage;
+export default ManufacturePage;
