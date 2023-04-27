@@ -26,9 +26,18 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}:Props) => {
     const [categoryEdit, setCategoryEdit] = useState(category)
 
     const onEditClick = () => {
-        editCategory();
-
-        onClose();
+        pepelevAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
+            {
+                item:
+                    {
+                        id:category.id,
+                        name:category.name
+                    }
+            })
+            .then(res => {
+                onEdit(categoryEdit)
+                onClose();
+            })
     }
     return (
         <PepelevPopup
