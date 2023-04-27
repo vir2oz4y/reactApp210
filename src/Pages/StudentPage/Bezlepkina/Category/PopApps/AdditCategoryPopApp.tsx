@@ -3,6 +3,7 @@ import BezlepkinaPopup, {IPopup} from "../../../../../Components/Bezlepkina/Bezl
 import {Category} from "../models";
 import TextField from "@mui/material/TextField";
 import {Button} from "@mui/material";
+import {BezlepkinaAxios} from "../../BezlepkinaPage";
 
 type Props=IPopup &{
     onEdit:(newCategory:Category)=>void;
@@ -13,8 +14,17 @@ const EditCategoryPopApp = ({open, onClose,category,onEdit}:Props) => {
 
     const [categoryEdit,setCategoryEdit]=useState(category)
     const onEditClick=()=>{
-        onEdit({id:Math.random(),name:categoryName});
-        onClose();
+        BezlepkinaAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
+            {
+                item: {
+                    id: categoryName.id,
+                    name: categoryName.name,
+                }
+            })
+            .then(res=>{
+                onEdit(categoryEdit)
+                onClose();
+            })
     }
     return (
         <BezlepkinaPopup

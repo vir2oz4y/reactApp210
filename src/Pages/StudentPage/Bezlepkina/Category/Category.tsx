@@ -10,6 +10,7 @@ import {Button} from '@mui/material';
 import CreateCategoryPopApp from "./PopApps/CreateCategoryPopApp";
 import EditCategoryPopApp from "./PopApps/AdditCategoryPopApp";
 import axios from 'axios';
+import {BezlepkinaAxios} from "../BezlepkinaPage";
 
 
 const BezlepkinaCategory = () => {
@@ -20,7 +21,7 @@ const BezlepkinaCategory = () => {
     ])
     
     const getCategory = () => {
-        axios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/user/login', {
+        BezlepkinaAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list', {
             headers: {
                 Authorization: 'Bearer ' + authToken
             }
