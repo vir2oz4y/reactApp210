@@ -28,7 +28,7 @@ import { default as UdalovProduct } from "../StudentPage/UdalovKirill/Product/Pr
 import KiryutinVladPage from "../StudentPage/KiryutinVlad/KiryutinVladPage";
 import {default as KiryutinCategory} from '../StudentPage/KiryutinVlad/Category/CategoryPage';
 import {default as KiryutinClient} from "../StudentPage/KiryutinVlad/Client/Client";
-import {default as KiryutinManufacturer} from "../StudentPage/KiryutinVlad/Manufacturer/Manufacturer";
+import {default as KiryutinManufacturer} from "../StudentPage/KiryutinVlad/Manufacturer/ManufacturerPage";
 import {default as KiryutinOrder} from "../StudentPage/KiryutinVlad/Order/Order";
 import {default as KiryutinProduct} from "../StudentPage/KiryutinVlad/Product/Product";
 import {default as KiryutinPurchase} from "../StudentPage/KiryutinVlad/Purchase/Purchase";

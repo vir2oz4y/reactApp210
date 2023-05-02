@@ -14,11 +14,14 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}:Props) => {
     const editCategory = () => {
         kiryutinAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
             {
-                id:category.id,
-                name:category.name
+                item: {
+                    id:category.id,
+                    name:category.name
+                }
             })
             .then(res => {
-                onEdit(res.data.item)
+                onEdit(categoryEdit)
+                onClose()
             })
     }
 
@@ -27,12 +30,10 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}:Props) => {
 
     const onEditClick = () => {
         editCategory();
-
-        onClose();
     }
 
     return (
-        <KiryutinPopup open={open} onClose={() => onClose()} title={"Создать категорию"}>
+        <KiryutinPopup open={open} onClose={() => onClose()} title={"Изменить категорию"}>
             <div style={{display:"flex", justifyContent:"center", gap:"10px"}}>
                 <TextField
                     id="standard-basic"
