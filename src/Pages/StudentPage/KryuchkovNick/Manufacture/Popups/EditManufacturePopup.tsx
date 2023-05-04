@@ -44,7 +44,7 @@ const EditManufacturePopup = ({open, onClose, Manufacture, onEdit}: Props) => {
                 }}
             >
                 <TextField
-                    label="Название поставщика"
+                    label="Название производителя"
                     variant="standard"
                     fullWidth={true}
                     value={ManufactureEdit.name}

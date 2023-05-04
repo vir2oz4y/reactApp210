@@ -49,7 +49,7 @@ const CreateManufacturePopup = ({open, onClose, onCreate}: Props) => {
                 }}
             >
                 <TextField
-                    label="Название поставщика"
+                    label="Название производителя"
                     variant="standard"
                     fullWidth={true}
                     value={manufacture.name}

@@ -1,57 +1,61 @@
 import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import React, {useEffect, useState} from 'react';
-//import manufacture from "./models";
+import {Client} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import {kryuchkovAxios} from '../KryuchkovNickPage';
-import {Manufacture} from "./models";
-import CreateManufacturePopup from "./Popups/CreateManufacturePopup";
-import EditManufacturePopup from "./Popups/EditManufacturePopup";
+import CreateClientPopup from "./Popups/CreateClientPopup";
+import EditClientPopup from "./Popups/EditClientPopup";
+import MaleIcon from '@mui/icons-material/Male';
+import FemaleIcon from '@mui/icons-material/Female';
 
-const ManufacturePage = () => {
+const ClientPage = () => {
 
-    const [manufactureList, setManufactureList] = useState<Manufacture[]>([])
+    const [ClientList, setClientList] = useState<Client[]>([])
 
-    const getManufacturies = () => {
-        kryuchkovAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
+    const getClients = () => {
+        kryuchkovAxios.get<{ items: Client[] }>('https://canstudy.ru/orderapi/Client/list')
             .then(res => {
-                setManufactureList(res.data.items);
+                setClientList(res.data.items);
             })
     }
 
 
     useEffect(() => {
-        getManufacturies();
+        getClients();
     }, [])
 
 
     const onDeleteClick = (id: number) => {
-
-        kryuchkovAxios.delete(`https://canstudy.ru/orderapi/manufacturer/${id}`)
+        kryuchkovAxios.delete(`https://canstudy.ru/orderapi/Client/${id}`)
             .then(res => {
-                setManufactureList(prev =>
+                setClientList(prev =>
                     prev.filter(el => el.id !== id)
                 )
             })
     }
 
     const onEditClick = (id: number) => {
-        const manufacture = manufactureList.find(el => el.id === id)!;
-        setEditmanufacture(manufacture)
+        const Client = ClientList.find(el => el.id === id)!;
+        setEditClient(Client)
     }
 
-    const onCreate = (manufacture: Manufacture) => {
-        setManufactureList(prev => [...prev, manufacture])
+    const onCreate = (Client: Client) => {
+        setClientList(prev => [...prev, Client])
     }
 
-    const onEdit = (manufacture: Manufacture) => {
-        setManufactureList(prev => {
-            const curmanufacture = prev.find(el => el.id === manufacture.id)!;
+    const onEdit = (Client: Client) => {
+        setClientList(prev => {
+            const curClient = prev.find(el => el.id === Client.id)!;
 
-            curmanufacture.name = manufacture.name;
-            curmanufacture.country = manufacture.country;
-            curmanufacture.city = manufacture.city;
+            if (curClient) {
+                curClient.firstName = Client.firstName;
+                curClient.lastName = Client.lastName;
+                curClient.phoneNumber = Client.phoneNumber;
+                curClient.email = Client.email;
+                curClient.sex = Client.sex;
+            }
 
             return [...prev]
         })
@@ -63,18 +67,34 @@ const ManufacturePage = () => {
             headerName: 'Id'
         },
         {
-            field: 'name',
-            headerName: 'Название',
+            field: 'sex',
+            headerName: 'Пол',
+            flex: 1,
+            renderCell:(e)=>{
+                if (e.value?.toString() === "0")
+                    return <MaleIcon/>
+
+                return <FemaleIcon/>
+            }
+        },
+        {
+            field: 'firstName',
+            headerName: 'Имя',
             flex: 1
         },
         {
-            field: 'country',
-            headerName: 'Страна',
+            field: 'lastName',
+            headerName: 'Фамилия',
             flex: 1
         },
         {
-            field: 'city',
-            headerName: 'Город',
+            field: 'email',
+            headerName: 'Почта',
+            flex: 1
+        },
+        {
+            field: 'phoneNumber',
+            headerName: 'Телефон',
             flex: 1
         },
         {
@@ -103,22 +123,23 @@ const ManufacturePage = () => {
 
     const [createPopupOpened, setCreatePopupOpened] = useState(false)
 
-    const [editmanufacture, setEditmanufacture] = useState<Manufacture | null>(null)
+    const [editClient, setEditClient] = useState<Client | null>(null)
 
     return (
         <div style={{width: '100%'}}>
 
-            {createPopupOpened && <CreateManufacturePopup
+            {createPopupOpened && <CreateClientPopup
                 open={createPopupOpened}
                 onClose={() => setCreatePopupOpened(false)}
-                onCreate={(newManufacture) => onCreate(newManufacture)}
+                onCreate={(newClient) => onCreate(newClient)}
             />}
 
-            {editmanufacture !== null && <EditManufacturePopup
-                open={editmanufacture !== null}
-                onClose={() => setEditmanufacture(null)}
-                Manufacture={editmanufacture}
-                onEdit={(editmanufacture) => onEdit(editmanufacture)}
+
+            {editClient !== null && <EditClientPopup
+                open={editClient !== null}
+                onClose={() => setEditClient(null)}
+                client={editClient}
+                onEdit={(editClient) => onEdit(editClient)}
             />}
 
             <div style={{
@@ -127,7 +148,7 @@ const ManufacturePage = () => {
                 alignItems: 'center'
             }}>
 
-                <h1>Производители</h1>
+                <h1>Клиенты</h1>
 
                 <div>
                     <Button
@@ -135,7 +156,7 @@ const ManufacturePage = () => {
                         variant={'contained'}
                         onClick={() => setCreatePopupOpened(true)}
                     >
-                        Добавить производителя
+                        Создать клиента
                     </Button>
 
                 </div>
@@ -144,7 +165,7 @@ const ManufacturePage = () => {
 
             <div style={{height: '80vh', width: '100%'}}>
                 <DataGrid
-                    rows={manufactureList}
+                    rows={ClientList}
                     columns={columns}
                     initialState={{
                         pagination: {
@@ -162,4 +183,4 @@ const ManufacturePage = () => {
     );
 };
 
-export default ManufacturePage;
+export default ClientPage;

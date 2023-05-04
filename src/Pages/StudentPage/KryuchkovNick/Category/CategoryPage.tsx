@@ -117,7 +117,7 @@ const CategoryPage = () => {
                 alignItems: 'center'
             }}>
 
-                <h1>Category</h1>
+                <h1>Категории</h1>
 
                 <div>
                     <Button
@@ -125,7 +125,7 @@ const CategoryPage = () => {
                         variant={'contained'}
                         onClick={() => setCreatePopupOpened(true)}
                     >
-                        Add Category
+                        Создать категорию
                     </Button>
 
                 </div>

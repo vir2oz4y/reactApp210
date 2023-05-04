@@ -12,31 +12,31 @@ const AsideMenu = () => {
 
             <ListItem disablePadding>
                 <ListItemButton onClick={()=>navigate('category')}>
-                    <ListItemText primary="Category" />
+                    <ListItemText primary="Категории" />
                 </ListItemButton>
             </ListItem>
 
             <ListItem disablePadding>
                 <ListItemButton onClick={() => navigate('manufacture')}>
-                    <ListItemText primary="Manufacture" />
+                    <ListItemText primary="Производители" />
                 </ListItemButton>
             </ListItem>
 
             <ListItem disablePadding>
                 <ListItemButton onClick={() => navigate('client')}>
-                    <ListItemText primary="Client" />
+                    <ListItemText primary="Клиенты" />
                 </ListItemButton>
             </ListItem>
-
+ы
             <ListItem disablePadding>
                 <ListItemButton onClick={() => navigate('product')}>
-                    <ListItemText primary="Product" />
+                    <ListItemText primary="Товары" />
                 </ListItemButton>
             </ListItem>
 
             <ListItem disablePadding>
                 <ListItemButton onClick={() => navigate('order')}>
-                    <ListItemText primary="Order" />
+                    <ListItemText primary="Заказы" />
                 </ListItemButton>
             </ListItem>
         </List>

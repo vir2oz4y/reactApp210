@@ -1,57 +1,65 @@
 import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import React, {useEffect, useState} from 'react';
-//import manufacture from "./models";
+import {Product} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import {kryuchkovAxios} from '../KryuchkovNickPage';
-import {Manufacture} from "./models";
-import CreateManufacturePopup from "./Popups/CreateManufacturePopup";
-import EditManufacturePopup from "./Popups/EditManufacturePopup";
+import CreateProductPopup from "./Popups/CreateProductPopup";
+import EditProductPopup from "./Popups/EditProductPopup";
+//import CreateProductPopup from "./Popups/CreateProductPopup";
+//import EditProductPopup from "./Popups/EditProductPopup";
 
-const ManufacturePage = () => {
 
-    const [manufactureList, setManufactureList] = useState<Manufacture[]>([])
+const ProductPage = () => {
 
-    const getManufacturies = () => {
-        kryuchkovAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
+    const [ProductList, setProductList] = useState<Product[]>([])
+
+    const getProducts = () => {
+        kryuchkovAxios.get<{ items: Product[] }>('https://canstudy.ru/orderapi/Product/list')
             .then(res => {
-                setManufactureList(res.data.items);
+                setProductList(res.data.items);
             })
     }
 
 
     useEffect(() => {
-        getManufacturies();
+        getProducts();
     }, [])
 
 
     const onDeleteClick = (id: number) => {
-
-        kryuchkovAxios.delete(`https://canstudy.ru/orderapi/manufacturer/${id}`)
+        kryuchkovAxios.delete(`https://canstudy.ru/orderapi/Product/${id}`)
             .then(res => {
-                setManufactureList(prev =>
+                setProductList(prev =>
                     prev.filter(el => el.id !== id)
                 )
             })
     }
 
     const onEditClick = (id: number) => {
-        const manufacture = manufactureList.find(el => el.id === id)!;
-        setEditmanufacture(manufacture)
+        const Product = ProductList.find(el => el.id === id)!;
+        setEditProduct(Product)
     }
 
-    const onCreate = (manufacture: Manufacture) => {
-        setManufactureList(prev => [...prev, manufacture])
+    const onCreate = (Product: Product) => {
+        setProductList(prev => [...prev, Product])
     }
 
-    const onEdit = (manufacture: Manufacture) => {
-        setManufactureList(prev => {
-            const curmanufacture = prev.find(el => el.id === manufacture.id)!;
+    const onEdit = (Product: Product) => {
+        setProductList(prev => {
 
-            curmanufacture.name = manufacture.name;
-            curmanufacture.country = manufacture.country;
-            curmanufacture.city = manufacture.city;
+            const curProduct = prev.find(el => el.id === Product.id)!;
+
+            if (curProduct) {
+                curProduct.name = Product.name;
+                curProduct.description = Product.description;
+                curProduct.cost = Product.cost;
+                curProduct.manufacturerId = Product.manufacturerId;
+                curProduct.manufacturerName = Product.manufacturerName;
+                curProduct.categoryId = Product.categoryId;
+                curProduct.categoryName = Product.categoryName;
+            }
 
             return [...prev]
         })
@@ -68,13 +76,18 @@ const ManufacturePage = () => {
             flex: 1
         },
         {
-            field: 'country',
-            headerName: 'Страна',
+            field: 'cost',
+            headerName: 'Цена',
             flex: 1
         },
         {
-            field: 'city',
-            headerName: 'Город',
+            field: 'categoryName',
+            headerName: 'Категория',
+            flex: 1
+        },
+        {
+            field: 'manufacturerName',
+            headerName: 'Производитель',
             flex: 1
         },
         {
@@ -103,22 +116,23 @@ const ManufacturePage = () => {
 
     const [createPopupOpened, setCreatePopupOpened] = useState(false)
 
-    const [editmanufacture, setEditmanufacture] = useState<Manufacture | null>(null)
+    const [editProduct, setEditProduct] = useState<Product | null>(null)
 
     return (
         <div style={{width: '100%'}}>
 
-            {createPopupOpened && <CreateManufacturePopup
+            {createPopupOpened && <CreateProductPopup
                 open={createPopupOpened}
                 onClose={() => setCreatePopupOpened(false)}
-                onCreate={(newManufacture) => onCreate(newManufacture)}
+                onCreate={(newProduct) => onCreate(newProduct)}
             />}
 
-            {editmanufacture !== null && <EditManufacturePopup
-                open={editmanufacture !== null}
-                onClose={() => setEditmanufacture(null)}
-                Manufacture={editmanufacture}
-                onEdit={(editmanufacture) => onEdit(editmanufacture)}
+
+            {editProduct !== null && <EditProductPopup
+                open={editProduct !== null}
+                onClose={() => setEditProduct(null)}
+                Product={editProduct}
+                onEdit={(editProduct) => onEdit(editProduct)}
             />}
 
             <div style={{
@@ -127,7 +141,7 @@ const ManufacturePage = () => {
                 alignItems: 'center'
             }}>
 
-                <h1>Производители</h1>
+                <h1>Товар</h1>
 
                 <div>
                     <Button
@@ -135,7 +149,7 @@ const ManufacturePage = () => {
                         variant={'contained'}
                         onClick={() => setCreatePopupOpened(true)}
                     >
-                        Добавить производителя
+                        Создать товар
                     </Button>
 
                 </div>
@@ -144,7 +158,7 @@ const ManufacturePage = () => {
 
             <div style={{height: '80vh', width: '100%'}}>
                 <DataGrid
-                    rows={manufactureList}
+                    rows={ProductList}
                     columns={columns}
                     initialState={{
                         pagination: {
@@ -162,4 +176,4 @@ const ManufacturePage = () => {
     );
 };
 
-export default ManufacturePage;
+export default ProductPage;
