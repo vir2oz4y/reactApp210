@@ -11,25 +11,20 @@ import { BezlepkinaAxios } from '../../BezlepkinaPage';
 type Props=IPopup &{
     onCreate:(newCategory:Category)=>void;
 }
-const CreateCategoryPopApp = ({open, onClose,onCreate}:Props) => {
-const [categoryName, setCategoryName] = useState('')
 
-const [authToken, setAuthToken] = useState('');
+const CreateCategoryPopApp = ({ open, onClose, onCreate }: Props) => {
+
+    const [categoryName, setCategoryName] = useState('')
 
     const CreateCategory = () => {
-        BezlepkinaAxios.post<{ item:Category}>('https://canstudy.ru/orderapi/user/login',
+
+        BezlepkinaAxios.post<{ item: Category }>('https://canstudy.ru/orderapi/category',
             {
                 name: categoryName
-            },
-            {
-                headers:
-                {
-                    Aurthorization: 'Bearer '+authToken
-                }
             })
-                .then(res => {
-                    onCreate(res.data.item)
-                })
+            .then(res => {
+                onCreate(res.data.item)
+            })
     }
 
     const onCreateClick=()=>{
@@ -42,13 +37,20 @@ const [authToken, setAuthToken] = useState('');
             open={open}
             onClose={() => onClose()}
         >
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1em'
+                }}
+            >
                 <TextField
-                    label={"название категории"}
+                    label={"category name"}
                     variant={"standard"}
                     value={categoryName}
                     onChange={e=>setCategoryName((e.target.value))}
-                    fullWidth={true}/>
+                    fullWidth={true} />
+
                 <div style={{display:'flex',justifyContent:'center'}}>
                     <Button
                         color={'primary'}

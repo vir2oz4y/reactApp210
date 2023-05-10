@@ -3,14 +3,15 @@ import BezlepkinaPopup, {IPopup} from "../../../../../Components/Bezlepkina/Bezl
 import {Button, Input} from '@mui/material';
 import TextField from "@mui/material/TextField";
 import { BezlepkinaAxios } from '../../BezlepkinaPage';
-import {Manufacturer} from '../models';
+import {Manufacture} from '../models';
 
 type Props=IPopup &{
-    onCreate:(newManufacturer:Manufacturer)=>void;
+    onCreate:(newManufacture:Manufacture)=>void;
 }
-const CreateManufacturerPopup = ({open, onClose,onCreate}:Props) => {
 
-    const [manufacture,setManufacture]=useState<Manufacturer>(
+const CreateManufacturePopup = ({open, onClose,onCreate}:Props) => {
+
+    const [manufacture,setManufacture]=useState<Manufacture>(
         {
             id:0,
             name:'',
@@ -19,12 +20,12 @@ const CreateManufacturerPopup = ({open, onClose,onCreate}:Props) => {
         }
     )
 
-    const CreateManufacturer = () => {
-        BezlepkinaAxios.post<{ item:Manufacturer}>('https://canstudy.ru/orderapi/user/login',
+    const CreateManufacture = () => {
+        BezlepkinaAxios.post<{ item: Manufacture }>('https://canstudy.ru/orderapi/manufacturer',
             {
                 name: manufacture.name,
                 city: manufacture.city,
-                country: manufacture.country,
+                country: manufacture.country
             })
             .then(res => {
                 onCreate(res.data.item)
@@ -33,32 +34,53 @@ const CreateManufacturerPopup = ({open, onClose,onCreate}:Props) => {
 
 
     const onCreateClick=()=>{
-        CreateManufacturer()
-        onClose()
+        CreateManufacture();
+        onClose();
     }
+
     return (
         <BezlepkinaPopup
-            title={'Manufacturer create'}
+            title={'Manufacture create'}
             open={open}
             onClose={() => onClose()}
         >
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1em'
+                }}
+            >
                 <TextField
-                    label={"Страна"}
-                    variant={"standard"}
+                    label="название"
+                    variant="standard"
+                    value={manufacture.name}
+                    onChange={e => setManufacture(prev => (
+                        { ...prev, name: e.target.value }
+                    ))}
+                    fullWidth={true}
+                />
+
+                <TextField
+                    label="Страна"
+                    variant="standard"
                     value={manufacture.country}
                     onChange={e=>setManufacture(prev=>(
                         {...prev,country:e.target.value}
                     ))}
-                    fullWidth={true}/>
+                    fullWidth={true}
+                />
+              
                 <TextField
-                    label={"название"}
-                    variant={"standard"}
-                    value={manufacture.name}
-                    onChange={e=>setManufacture(prev=>(
-                        {...prev,name:e.target.value}
+                    label="Город"
+                    variant="standard"
+                    fullWidth={true}
+                    value={manufacture.city}
+                    onChange={e => setManufacture(prev => (
+                        { ...prev, city: e.target.value }
                     ))}
-                    fullWidth={true}/>
+                />
+
                 <div style={{display:'flex',justifyContent:'center'}}>
                     <Button
                         color={'primary'}
@@ -75,4 +97,4 @@ const CreateManufacturerPopup = ({open, onClose,onCreate}:Props) => {
     );
 };
 
-export default CreateManufacturerPopup;
+export default CreateManufacturePopup;

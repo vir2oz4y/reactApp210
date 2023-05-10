@@ -12,13 +12,14 @@ type Props=IPopup &{
 const EditCategoryPopApp = ({open, onClose,category,onEdit}:Props) => {
     const [categoryName,setCategoryName]=useState('')
 
-    const [categoryEdit,setCategoryEdit]=useState(category)
+    const [categoryEdit, setCategoryEdit] = useState(category)
+
     const onEditClick=()=>{
         BezlepkinaAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
             {
                 item: {
-                    id: categoryName.id,
-                    name: categoryName.name,
+                    id:category.id,
+                    name:category.name,
                 }
             })
             .then(res=>{
@@ -28,11 +29,16 @@ const EditCategoryPopApp = ({open, onClose,category,onEdit}:Props) => {
     }
     return (
         <BezlepkinaPopup
-            title={'category create'}
+            title={'Создание категории'}
             open={open}
             onClose={() => onClose()}
         >
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1em'
+                }}            >
                 <TextField
                     label={"название категории"}
                     variant={"standard"}

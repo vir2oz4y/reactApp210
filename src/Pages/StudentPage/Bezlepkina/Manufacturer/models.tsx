@@ -1,4 +1,4 @@
-export type Manufacturer={
+export type Manufacture={
     id: number,
     name: string,
     city: string,

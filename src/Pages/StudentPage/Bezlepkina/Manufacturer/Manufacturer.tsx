@@ -7,62 +7,63 @@ import SendIcon from '@mui/icons-material/Send';
 import BezlepkinaPopup from '../../../../Components/Bezlepkina/BezlepkinaPopup/BezlepkinaPopup';
 import {Button} from '@mui/material';
 import axios from 'axios';
-import {Manufacturer} from './models';
-import CreateManufacturerPopup from "./PopApps/CreateManufacturePopup";
-import EditManufacturerPopApp from "./PopApps/AdditManufacturePopup";
+import {Manufacture} from './models';
+import CreateManufacturePopup from "./PopApps/CreateManufacturePopup";
+import EditManufacturePopApp from "./PopApps/AdditManufacturePopup";
+import { BezlepkinaAxios } from '../BezlepkinaPage';
 
-const BezlepkinaManufacturer = () => {
-    const [authToken, setAuthToken] = useState('');
+const BezlepkinaManufacture = () => {
 
-    const [ManufacturerList, setManufacturerList] = useState<Manufacturer[]>([
+    const [ManufactureList, setManufactureList] = useState<Manufacture[]>([])
 
-    ])
-
-    const getManufacturer = () => {
-        axios.get<{ items: Manufacturer[] }>('https://canstudy.ru/orderapi/Manufacturer/list', {
-            headers: {
-                Authorization: 'Bearer ' + authToken
-            }
-        })
+    const getManufacture = () => {
+        BezlepkinaAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
             .then(res => {
-                setManufacturerList(res.data.items)
+                setManufactureList(res.data.items)
             })
     }
     useEffect(() => {
-        getManufacturer();
+        getManufacture();
     },[])
 
-
     const onDeleteClick = (id: number) => {
-        setManufacturerList(prev =>
-            prev.filter(el => el.id !== id))
+        BezlepkinaAxios.delete(`https://canstudy.ru/orderapi/manufacturer/${id}`)
+            .then(res => {
+                setManufactureList(prev =>
+                    prev.filter(el => el.id !== id)
+                )
+            })
     }
 
-    const onCreate = (ManufacturerList: Manufacturer) => {
-        setManufacturerList(prevState => [...prevState, ManufacturerList])
+    const onCreate = (Manufacture: Manufacture) => {
+        setManufactureList(prev => [...prev, Manufacture])
     }
 
     const columns: GridColDef[] = [{
-        field: 'id',
-        headerName: 'название'
-    },
+            field: 'id',
+            headerName: 'Id'
+         },
         {
             field: 'name',
-            headerName: 'название'
+            headerName: 'название',
+            flex:1
         },
         {
             field: 'country',
-            headerName: 'страна'
+            headerName: 'страна',
+             flex: 1
         },
         {
             field: 'city',
-            headerName: 'город'
+            headerName: 'город',
+            flex: 1
         },
         {
             field: '',
             headerName: '',
             renderCell: (e: any) => {
-                return <div style={{display: 'flex', gap: '1em'}}>
+                return <div style={{ display: 'flex', gap: '1em' }}>
+
                     <IconButton aria-label="delete"
                                 onClick={() => onDeleteClick(e.row.id)}>
                         <DeleteIcon/>
@@ -77,18 +78,23 @@ const BezlepkinaManufacturer = () => {
             }
         }
     ]
-    const [creatrPopupOpened, setCreatePopupOpened] = useState(false)
-    const [editManufacturer, setEditManufacturer] = useState<Manufacturer | null>(null)
+    const [createPopupOpened, setCreatePopupOpened] = useState(false)
+
+    const [editManufacture, setEditManufacture] = useState<Manufacture | null>(null)
 
 
     const onEditClick = (id: number) => {
-        const Manufacturer = ManufacturerList.find(el => el.id === id)!;
-        setEditManufacturer(Manufacturer)
+        const Manufacture = ManufactureList.find(el => el.id === id)!;
+        setEditManufacture(Manufacture)
     }
-    const onEdit = (Manufacturer: Manufacturer) => {
-        setManufacturerList(prev => {
-            const curManufacturer = prev.find(el => el.id === Manufacturer.id)!;
-            curManufacturer.name=Manufacturer.name;
+    const onEdit = (Manufacture: Manufacture) => {
+        setManufactureList(prev => {
+            const curManufacture = prev.find(el => el.id === Manufacture.id)!;
+
+            curManufacture.name=Manufacture.name;
+            curManufacture.name=Manufacture.country;
+            curManufacture.name = Manufacture.city;
+
             return [...prev]
         })
     }
@@ -98,17 +104,17 @@ const BezlepkinaManufacturer = () => {
     return (
         <div style={{width: '100%'}}>
 
-          {creatrPopupOpened && <CreateManufacturerPopup
-                open={creatrPopupOpened}
+          {createPopupOpened && <CreateManufacturePopup
+                open={createPopupOpened}
                 onClose={() => setCreatePopupOpened(false)}
-                onCreate={(cat) => onCreate(cat)}
+                onCreate={(newManufacture) => onCreate(newManufacture)}
             />}
 
-            {editManufacturer != null && <EditManufacturerPopApp
-                open={editManufacturer != null}
-                onClose={() => setEditManufacturer(null)}
-                Manufacturer={editManufacturer}
-                onEdit={(EditManufacturer) => onEdit(EditManufacturer)}
+            {editManufacture !== null && <EditManufacturePopApp
+                open={editManufacture !== null}
+                onClose={() => setEditManufacture(null)}
+                Manufacture={editManufacture}
+                onEdit={(EditManufacture) => onEdit(EditManufacture)}
             />}
 
             <div style={{
@@ -116,18 +122,21 @@ const BezlepkinaManufacturer = () => {
                 justifyContent: 'space-between',
                 alignItems: 'center'
             }}>
-                <h1>Manufacturer </h1>
+
+                <h1>Manufacture </h1>
             </div>
 
             <div>
-                <Button variant="contained"
-                        onClick={() => setCreatePopupOpened(true)}>
-                    Add
+                <Button color={'primary'}
+                    variant={'contained'}
+                    onClick={() => setCreatePopupOpened(true)}>
+                    Add manufacturer
                 </Button>
             </div>
+
             <div style={{height: '80vh', width: '100%'}}>
                 <DataGrid
-                    rows={ManufacturerList}
+                    rows={ManufactureList}
                     columns={columns}
                     initialState={{
                         pagination: {
@@ -137,7 +146,7 @@ const BezlepkinaManufacturer = () => {
                         },
                     }}
                     pageSizeOptions={[5]}
-                    checkboxSelection
+                    //checkboxSelection
                     disableRowSelectionOnClick
                 />
 
@@ -145,4 +154,4 @@ const BezlepkinaManufacturer = () => {
         </div>
     );
 }
-export default BezlepkinaManufacturer;
+export default BezlepkinaManufacture;

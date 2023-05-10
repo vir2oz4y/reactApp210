@@ -14,35 +14,48 @@ import {BezlepkinaAxios} from "../BezlepkinaPage";
 
 
 const BezlepkinaCategory = () => {
-  const [authToken, setAuthToken] = useState('');
 
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        
-    ])
+    const [categoryList, setCategoryList] = useState<Category[]>([])
     
     const getCategory = () => {
-        BezlepkinaAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list', {
-            headers: {
-                Authorization: 'Bearer ' + authToken
-            }
+        BezlepkinaAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+    .then(res => {
+            setCategoryList(res.data.items);
         })
-            .then(res => {
-                setcategoryList(res.data.items)
-            })
     }
+        
     useEffect(() => {
             getCategory();
     },[])
  
 
     const onDeleteClick = (id: number) => {
-        setcategoryList(prev =>
-            prev.filter(el => el.id !== id))
+        BezlepkinaAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
+            .then(res => {
+                setCategoryList(prev =>
+                    prev.filter(el => el.id !== id)
+                )
+            })
     }
 
-    const onCreate = (categoryList: Category) => {
-        setcategoryList(prevState => [...prevState, categoryList])
+    const onEditClick = (id: number) => {
+        const category = categoryList.find(el => el.id === id)!;
+        setEditCategory(category)
     }
+
+    const onCreate = (category: Category) => {
+        setCategoryList(prev => [...prev, category])
+    }
+    const onEdit = (category: Category) => {
+        setCategoryList(prev => {
+            const curCategory = prev.find(el => el.id === category.id)!;
+
+            curCategory.name = category.name;
+
+            return [...prev]
+        })
+    }
+
 
     const columns: GridColDef[] = [{
         field: 'id',
@@ -56,7 +69,8 @@ const BezlepkinaCategory = () => {
             field: '',
             headerName: '',
             renderCell: (e: any) => {
-                return <div style={{display: 'flex', gap: '1em'}}>
+                return <div style={{ display: 'flex', gap: '1em' }}>
+
                     <IconButton aria-label="delete"
                                 onClick={() => onDeleteClick(e.row.id)}>
                         <DeleteIcon/>
@@ -74,27 +88,13 @@ const BezlepkinaCategory = () => {
     const [creatrPopupOpened, setCreatePopupOpened] = useState(false)
     const [editCategory, setEditCategory] = useState<Category | null>(null)
 
-
-    const onEditClick = (id: number) => {
-        const category = categoryList.find(el => el.id === id)!;
-        setEditCategory(category)
-    }
-    const onEdit = (category: Category) => {
-        setcategoryList(prev => {
-            const curCategory = prev.find(el => el.id === category.id)!;
-            curCategory.name=category.name;
-            return [...prev]
-        })
-    }
-
-
     return (
         <div style={{width: '100%'}}>
 
             {creatrPopupOpened && <CreateCategoryPopApp
                 open={creatrPopupOpened}
                 onClose={() => setCreatePopupOpened(false)}
-                onCreate={(cat) => onCreate(cat)}
+                onCreate={(newCategory) => onCreate(newCategory)}
             />}
 
             {editCategory != null && <EditCategoryPopApp
@@ -109,15 +109,18 @@ const BezlepkinaCategory = () => {
                 justifyContent: 'space-between',
                 alignItems: 'center'
             }}>
+
                 <h1>Category </h1>
             </div>
 
             <div>
-                <Button variant="contained"
+                <Button color={'primary'}
+                    variant="contained"
                         onClick={() => setCreatePopupOpened(true)}>
-                    Add
+                    ADD
                 </Button>
             </div>
+
             <div style={{height: '80vh', width: '100%'}}>
                 <DataGrid
                     rows={categoryList}
@@ -130,7 +133,7 @@ const BezlepkinaCategory = () => {
                         },
                     }}
                     pageSizeOptions={[5]}
-                    checkboxSelection
+                   // checkboxSelection
                     disableRowSelectionOnClick
                 />
 
