@@ -7,6 +7,8 @@ import {Manufacturer} from "./model"
 import Button from "@mui/material/Button";
 import axios from "axios";
 import {kiryutinAxios} from "../KiryutinVladPage";
+import CreateManufacturerPopup from "./Popups/CreateManufacturerPopup";
+import EditManufacturerPopup from "./Popups/EditManufacturerPopup";
 
 const ManufacturerPage = () => {
 
@@ -49,6 +51,8 @@ const ManufacturerPage = () => {
             const curManufacturer = prev.find(el => el.id === Manufacturer.id)
 
             curManufacturer.name = Manufacturer.name;
+            curManufacturer.city = Manufacturer.city;
+            curManufacturer.country = Manufacturer.country;
 
             return [...prev]
         })
@@ -61,7 +65,18 @@ const ManufacturerPage = () => {
         },
         {
             field: 'name',
-            headerName: 'Name'
+            headerName: 'Name',
+            flex:1
+        },
+        {
+            field: 'city',
+            headerName: 'City',
+            flex:1
+        },
+        {
+            field: 'country',
+            headerName: 'Country',
+            flex:1
         },
         {
             field: '',
@@ -86,33 +101,33 @@ const ManufacturerPage = () => {
     return (
         <div style={{width:'100%'}}>
 
-            {/*{*/}
-            {/*    createPopupOpened &&*/}
-            {/*    <CreateManufacturePopup*/}
-            {/*        open={createPopupOpened}*/}
-            {/*        onClose={() => setCreatePopupOpened(false)}*/}
-            {/*        onCreate={(newManufacture) => onCreate(newManufacture)}*/}
-            {/*    />*/}
-            {/*}*/}
+            {
+                createPopupOpened &&
+                <CreateManufacturerPopup
+                    open={createPopupOpened}
+                    onClose={() => setCreatePopupOpened(false)}
+                    onCreate={(newManufacturer) => onCreate(newManufacturer)}
+                />
+            }
 
-            {/*{*/}
-            {/*    editManufacture !== null &&*/}
-            {/*    <EditManufacturePopup*/}
-            {/*        open={editManufacture !== null}*/}
-            {/*        onClose={() => setEditManufacture(null)}*/}
-            {/*        Manufacture={editManufacture}*/}
-            {/*        onEdit={(editManufacture) => onEdit(editManufacture)}*/}
-            {/*    />*/}
-            {/*}*/}
+            {
+                editManufacturer !== null &&
+                <EditManufacturerPopup
+                    open={editManufacturer !== null}
+                    onClose={() => setEditManufacturer(null)}
+                    manufacturer={editManufacturer}
+                    onEdit={(editManufacturer) => onEdit(editManufacturer)}
+                />
+            }
 
             <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                <h1>Категории товаров:</h1>
+                <h1>Производители товаров:</h1>
                 <Button
                     color={'primary'}
                     variant={'contained'}
                     size="medium"
                     onClick={() => setCreatePopupOpened(true)}>
-                    Создать категорию
+                    Создать производителя
                 </Button>
             </div>
             <div style={{height: '90vh', width: '100%'}}>
@@ -134,4 +149,5 @@ const ManufacturerPage = () => {
         </div>
     );
 };
+
 export default ManufacturerPage;

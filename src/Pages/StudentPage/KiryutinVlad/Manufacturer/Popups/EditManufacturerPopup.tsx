@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import KiryutinPopup, {IPopup} from "../../../../Components/KiryutinVlad/KiryutinPopup/KiryutinPopup";
-import {Manufacturer} from "./model";
+import KiryutinPopup, {IPopup} from "../../../../../Components/KiryutinVlad/KiryutinPopup/KiryutinPopup";
+import {Manufacturer} from "../model";
 import {Button, TextField} from "@mui/material";
-import {kiryutinAxios} from "../KiryutinVladPage";
+import {kiryutinAxios} from "../../KiryutinVladPage";
 
 type Props = IPopup & {
     onEdit: (newManufacturer:Manufacturer) => void;

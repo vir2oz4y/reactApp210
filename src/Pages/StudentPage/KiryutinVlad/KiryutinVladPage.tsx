@@ -29,13 +29,9 @@ const KiryutinVladPage = () => {
         <div>
             <Header studentFio={'Кирютин Владислав'}/>
             <ContentBlock>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-                <TextField id="filled-basic" label="Filled" variant="filled" />
-                Vlados
-                <div><Button variant="text">Text</Button></div>
+                <AsideMenu></AsideMenu>
+                <Outlet/>
             </ContentBlock>
-        <AsideMenu></AsideMenu>
-            <Outlet/>
         </div>
     );
 };
