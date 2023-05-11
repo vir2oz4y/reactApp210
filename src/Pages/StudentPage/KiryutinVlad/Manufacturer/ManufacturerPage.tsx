@@ -15,14 +15,14 @@ const ManufacturerPage = () => {
     const [ManufacturerList, setManufacturerList] = useState<Manufacturer[]>([])
 
     const getManufacturerFromHost = () => {
-        kiryutinAxios.get<{ items:Manufacturer[] }>('https://canstudy.ru/orderapi/Manufacture/list')
+        kiryutinAxios.get<{ items:Manufacturer[] }>('https://canstudy.ru/orderapi/manufacturer/list')
             .then(res => {
                 setManufacturerList(res.data.items)
             })
     }
 
     const removeManufacturerFromHost = (id:number) => {
-        kiryutinAxios.delete('https://canstudy.ru/orderapi/Manufacture/' + id)
+        kiryutinAxios.delete('https://canstudy.ru/orderapi/manufacturer/' + id)
             .then(() => {
                 setManufacturerList(prev =>
                     prev.filter(el => el.id !== id))

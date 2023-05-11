@@ -49,7 +49,7 @@ const CreateManufacturerPopup = ({open, onClose, onCreate}:Props) => {
                 />
                 <TextField
                     id="standard-basic"
-                    label="Страна поставщика"
+                    label="Город поставщика"
                     variant="standard"
                     fullWidth={true}
                     value={manufacturer.city}
@@ -57,7 +57,7 @@ const CreateManufacturerPopup = ({open, onClose, onCreate}:Props) => {
                 />
                 <TextField
                     id="standard-basic"
-                    label="Название поставщика"
+                    label="Страна поставщика"
                     variant="standard"
                     fullWidth={true}
                     value={manufacturer.country}

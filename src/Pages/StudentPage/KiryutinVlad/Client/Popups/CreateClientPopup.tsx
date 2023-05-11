@@ -14,7 +14,8 @@ const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
     const createClient = () => {
         kiryutinAxios.post<{ item:Client }>('https://canstudy.ru/orderapi/Client',
             {
-                ...client
+                ...client,
+                sex: parseInt(client.sex as any, 10)
             })
             .then(res => {
                 onCreate(res.data.item)
