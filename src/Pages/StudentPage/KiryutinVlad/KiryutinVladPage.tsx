@@ -14,7 +14,7 @@ const KiryutinVladPage = () => {
 
     const doLogin = () => {
         axios.post<{authToken:string}>('https://canstudy.ru/orderapi/user/login', {
-            identifier: "55910E3A-0857-4EC7-9EA0-F231DB8E26EB"
+            identifier: "C27A77F4-ED81-4B4A-8F54-550DB6ADC16F"
         })
             .then(res => {
                 kiryutinAxios.defaults.headers.common['Authorization'] = "Bearer " + res.data.authToken
