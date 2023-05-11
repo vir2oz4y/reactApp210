@@ -17,7 +17,7 @@ const EditIllegalProductPopup = ({open, onClose, IllegalProduct:IllegalProductEd
 
     const onEditClick = () => {
 
-        pepelevAxios.patch<{ item:IllegalProduct }>('https://canstudy.ru/orderapi/IllegalProduct',
+        pepelevAxios.patch<{ item:IllegalProduct }>('https://canstudy.ru/orderapi/Product',
             {
                 item:{
                     ...IllegalProduct

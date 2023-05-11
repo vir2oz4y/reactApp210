@@ -14,7 +14,7 @@ const IllegalProductPage = () => {
     const [IllegalProductList, setIllegalProductList] = useState<IllegalProduct[]>([])
 
     const getIllegalProducts = () => {
-        pepelevAxios.get<{ items: IllegalProduct[] }>('https://canstudy.ru/orderapi/IllegalProduct/list')
+        pepelevAxios.get<{ items: IllegalProduct[] }>('https://canstudy.ru/orderapi/Product/list')
             .then(res => {
                 setIllegalProductList(res.data.items);
             })
@@ -27,7 +27,7 @@ const IllegalProductPage = () => {
 
 
     const onDeleteClick = (id: number) => {
-        pepelevAxios.delete(`https://canstudy.ru/orderapi/IllegalProduct/${id}`)
+        pepelevAxios.delete(`https://canstudy.ru/orderapi/Product/${id}`)
             .then(res => {
                 setIllegalProductList(prev =>
                     prev.filter(el => el.id !== id)

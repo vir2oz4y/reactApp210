@@ -13,7 +13,7 @@ type Props = IPopup & {
 const CreateIllegalProductPopup = ({open, onClose, onCreate}: Props) => {
 
     const createIllegalProduct = () => {
-        pepelevAxios.post<{ item: IllegalProduct }>('https://canstudy.ru/orderapi/IllegalProduct',
+        pepelevAxios.post<{ item: IllegalProduct }>('https://canstudy.ru/orderapi/Product',
             {
                 ...IllegalProduct
             })
