@@ -123,7 +123,7 @@ const RouteComponent = () => {
                         <Route path={'client'} element={<UdalovClient/>} />
                         <Route path={'manufacturer'} element={<UdalovManufacturer />} />
                         <Route path={'order'} element={<UdalovOrder />} />
-                        <Route path={'product'} element={<UdalovProduct />} />
+                        <Route path={'Product'} element={<UdalovProduct />} />
                     </Route>
 
                     <Route path={'Serega'} element={<PepelevSergeyPage/>} >
