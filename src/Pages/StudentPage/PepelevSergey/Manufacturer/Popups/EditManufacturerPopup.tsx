@@ -12,22 +12,10 @@ type Props = IPopup & {
 }
 const EditManufacturerPopup = ({open, onClose, manufacturer, onEdit}:Props) => {
 
-    // TODO:
-    const editManufacturer = () => {
-        pepelevAxios.patch<{ item:Manufacturer }>('https://canstudy.ru/orderapi/Manufacturer',
-            {
-                id:manufacturer.id,
-                name:manufacturer.name
-            })
-            .then(res => {
-                onEdit(res.data.item)
-            })
-    }
-
-    const [manufacturerEdit, setManufacturerEdit] = useState(manufacturer)
+ const [manufacturerEdit, setManufacturerEdit] = useState(manufacturer)
 
     const onEditClick = () => {
-        pepelevAxios.patch<{ item:Manufacturer }>('https://canstudy.ru/orderapi/manufacturer',
+        pepelevAxios.patch<{ item:Manufacturer }>('https://canstudy.ru/orderapi/Manufacturer',
             {
                 item:{
                     id:manufacturer.id,
@@ -46,7 +34,7 @@ const EditManufacturerPopup = ({open, onClose, manufacturer, onEdit}:Props) => {
             open={open}
             onClose={()=> onClose()}>
             <div style={{display:"flex", flexDirection:"column", gap: "1em"}}>
-                <TextField label="Название категории" variant="standard" fullWidth={true}
+                <TextField label="Производитель" variant="standard" fullWidth={true}
                            value={manufacturerEdit.name}
                            onChange={e=>setManufacturerEdit(prev=> ({...prev, name: e.target.value}
                            ))}

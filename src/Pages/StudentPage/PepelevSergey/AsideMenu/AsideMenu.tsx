@@ -32,11 +32,6 @@ const AsideMenu = () => {
                     <ListItemText primary="Illegal Products" />
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding>
-                <ListItemButton onClick={()=>navigate('Purchase')}>
-                    <ListItemText primary="Purchase" />
-                </ListItemButton>
-            </ListItem>
         </List>
     );
 };
