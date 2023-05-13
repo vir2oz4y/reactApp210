@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    Routes,
-    Route, HashRouter,
-} from "react-router-dom";
+import {Routes, Route, HashRouter,} from "react-router-dom";
 import MainPage from "../MainPage";
 import StudentsPage from "../StudentsPage";
 
@@ -27,6 +24,15 @@ import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 import Test1 from "../StudentPage/KryuchkovNick/Test1/Test1";
 import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 
+import SakoyanIvanPage from "../StudentPage/SakoyanIvan/SakoyanIvanPage";
+import {default as SakoyanTest2} from "../StudentPage/SakoyanIvan/test2/Test2";
+import {default as SakoyanTest1} from "../StudentPage/SakoyanIvan/test1/Test1";
+import {default as SakoyanCategory} from "../StudentPage/SakoyanIvan/Category/Category";
+import {default as SakoyanClient} from "../StudentPage/SakoyanIvan/Client/Client";
+import {default as SakoyanManufactur} from "../StudentPage/SakoyanIvan/Manufactur/ManufacturerPage";
+import {default as SakoyanOrder} from "../StudentPage/SakoyanIvan/Order/Order";
+import {default as SakoyanProduct} from "../StudentPage/SakoyanIvan/Product/Product";
+import {default as SakoyanPurchase} from "../StudentPage/SakoyanIvan/Purchase/Purchase";
 
 
 const RouteComponent = () => {
@@ -35,13 +41,25 @@ const RouteComponent = () => {
             <Routes>
                 <Route path="/" element={<MainPage/>}>
                     <Route index element={<StudentsPage/>} />
-                    
-                    
+
+
                     <Route path={'Vlados'} element={<KiryutinVladPage/>} >
                         <Route path={'test1'} element={<KiryutinTest1/>} />
                         <Route path={'test2'} element={<KiryutinTest2/>} />
                     </Route>
-                    
+
+                    <Route path={'Vanya'} element={<SakoyanIvanPage/>} >
+                        <Route path={'test1'} element={<SakoyanTest1/>} />
+                        <Route path={'test2'} element={<SakoyanTest2/>} />
+                        <Route path={'Category'} element={<SakoyanCategory/>} />
+                        <Route path={'Client'} element={<SakoyanClient/>} />
+                        <Route path={'Manufactur'} element={<SakoyanManufactur/>} />
+                        <Route path={'Order'} element={<SakoyanOrder/>} />
+                        <Route path={'Product'} element={<SakoyanProduct/>} />
+                        <Route path={'Purchase'} element={<SakoyanPurchase/>} />
+                    </Route>
+
+
                     <Route path={'ondyshev'} element={<OndyshevDmitryPage></OndyshevDmitryPage>}>
                         <Route path={'test1'} element={<OndyshevTest1/>} />
                         <Route path={'test2'} element={<OndyshevTest2/>} />
@@ -52,16 +70,12 @@ const RouteComponent = () => {
                        <Route path={'test2'} element={<PepelevTest2/>}/>
                     </Route>
 
-                    <Route path={'trubnikov'} element={<TrubnikovTimurPage/>} >
-                        <Route path={'test1'} element={<TrubnikovTest1/>} />
-                        <Route path={'test2'} element={<TrubnikovTest2/>} />
-                    </Route>
-                   
+                    
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
                         <Route path={'test1'} element={<Test1/>}/>
                         <Route path={'test2'} element={<Test2/>}/>
                     </Route>
-                    
+
                 </Route>
             </Routes>
         </HashRouter>
