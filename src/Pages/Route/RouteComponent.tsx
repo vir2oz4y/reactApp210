@@ -53,9 +53,11 @@ import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 import CategoryPage from "../StudentPage/KryuchkovNick/Category/CategoryPage";
 
 
-import AgeevAlexandrPage from "../StudentPage/AgeevAlezander/AgeevAlexandrPage";
-import test1 from "../StudentPage/AgeevAlezander/test1/Test1";
-import test2 from "../StudentPage/AgeevAlezander/test2/Test2";
+import AgeevAlexandrPage from "../StudentPage/AgeevAlexander/AgeevAlexandrPage";
+import {default as AgeevCategory} from "../StudentPage/AgeevAlexander/Category/CategoryPage";
+import {default as AgeevProducts} from "../StudentPage/AgeevAlexander/Product/ProductPage";
+import {default as AgeevManufacturer} from "../StudentPage/AgeevAlexander/Manufacture/ManufacturePage";
+import {default as AgeevClient} from "../StudentPage/AgeevAlexander/Client/ClientPage";
 
 
 import ShchegolevaEkaterinaPage from '../StudentPage/ShchegolevaEkaterina/ShchegolevaEkaterinaPage';
@@ -153,8 +155,10 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'Ageev'} element={<AgeevAlexandrPage />} >
-                        <Route path={'test1'} element={<Test1 />} />
-                        <Route path={'test2'} element={<Test2 />} />
+                        <Route path={'category'} element={<AgeevCategory/>}/>
+                        <Route path={'client'} element={<AgeevClient/>}/>
+                        <Route path={'product'} element={<AgeevProducts/>}/>
+                        <Route path={'manufacture'} element={<AgeevManufacturer/>}/>
                     </Route>
                     
                     <Route path={'Shchegoleva'} element={<ShchegolevaEkaterinaPage/>} >
