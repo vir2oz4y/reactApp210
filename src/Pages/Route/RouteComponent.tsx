@@ -85,6 +85,12 @@ import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
 import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
 import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
 
+import NalyaykinPage from "../StudentPage/NalyaykinKonstantin/NalyaykinPage";
+import NalyaykinCategory from '../StudentPage/NalyaykinKonstantin/Category/CategoryPage';
+import NalyaykinClient from '../StudentPage/NalyaykinKonstantin/Client/Client';
+import NalyaykinOrder from '../StudentPage/NalyaykinKonstantin/Order/Order';
+import NalyaykinProduct from '../StudentPage/NalyaykinKonstantin/Product/Product';
+import NalyaykinManufacturer from '../StudentPage/NalyaykinKonstantin/Manufacturer/Manufacture';
 
 
 const RouteComponent = () => {
@@ -178,7 +184,13 @@ const RouteComponent = () => {
                         <Route path={'Order'} element={<BezlepkinaOrder />} />
                         <Route path={'Product'} element={<BezlepkinaProduct />} />
                     </Route>
-
+                    <Route path={'Nalyaykin'} element={<NalyaykinPage/>} >
+                        <Route path={'Category'} element={<NalyaykinCategory />} />
+                        <Route path={'Client'} element={<NalyaykinClient />} />
+                        <Route path={'Manufacturer'} element={<NalyaykinManufacturer />} />
+                        <Route path={'Order'} element={<NalyaykinOrder />} />
+                        <Route path={'Product'} element={<NalyaykinProduct />} />
+                    </Route>
                 </Route>
             </Routes>
         </HashRouter>
