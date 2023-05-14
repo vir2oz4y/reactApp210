@@ -28,8 +28,8 @@ const AsideMenu = () => {
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('IllegalProducts')}>
-                    <ListItemText primary="Illegal Products" />
+                <ListItemButton onClick={() => navigate('Product')}>
+                    <ListItemText primary="Product" />
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>

@@ -87,10 +87,10 @@ import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
 
 import NalyaykinPage from "../StudentPage/NalyaykinKonstantin/NalyaykinPage";
 import NalyaykinCategory from '../StudentPage/NalyaykinKonstantin/Category/CategoryPage';
-import NalyaykinClient from '../StudentPage/NalyaykinKonstantin/Client/Client';
+import NalyaykinClient from '../StudentPage/NalyaykinKonstantin/Client/ClientPage';
 import NalyaykinOrder from '../StudentPage/NalyaykinKonstantin/Order/Order';
-import NalyaykinProduct from '../StudentPage/NalyaykinKonstantin/Product/Product';
-import NalyaykinManufacturer from '../StudentPage/NalyaykinKonstantin/Manufacturer/Manufacture';
+import NalyaykinProduct from '../StudentPage/NalyaykinKonstantin/Product/ProductPage';
+import NalyaykinManufacturer from '../StudentPage/NalyaykinKonstantin/Manufacturer/ManufacturerPage';
 
 
 const RouteComponent = () => {

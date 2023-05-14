@@ -14,7 +14,7 @@ const Header = ({studentFio}:Props) => {
             </div>
 
             <div className={'header__group'}>
-                Группа - 210 Агеев Александр
+                Группа - 210 Наляйкин Константин
             </div>
         </Typography>
     );
