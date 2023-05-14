@@ -26,8 +26,12 @@ import { default as UdalovManufacturer } from "../StudentPage/UdalovKirill/Manuf
 import { default as UdalovProduct } from "../StudentPage/UdalovKirill/Product/Product";
 
 import KiryutinVladPage from "../StudentPage/KiryutinVlad/KiryutinVladPage";
-import {default as KiryutinTest1} from "../StudentPage/KiryutinVlad/test1/Test1";
-import {default as KiryutinTest2} from "../StudentPage/KiryutinVlad/test2/Test2";
+import {default as KiryutinCategory} from '../StudentPage/KiryutinVlad/Category/CategoryPage';
+import {default as KiryutinClient} from "../StudentPage/KiryutinVlad/Client/ClientPage";
+import {default as KiryutinManufacturer} from "../StudentPage/KiryutinVlad/Manufacturer/ManufacturerPage";
+import {default as KiryutinOrder} from "../StudentPage/KiryutinVlad/Order/Order";
+import {default as KiryutinProduct} from "../StudentPage/KiryutinVlad/Product/ProductPage";
+import {default as KiryutinPurchase} from "../StudentPage/KiryutinVlad/Purchase/Purchase";
 
 import OndyshevDmitryPage from "../StudentPage/OndyshevDmitry/OndyshevDmitryPage";
 import {default as OndyshevCategory} from '../StudentPage/OndyshevDmitry/Category/CategoryPage';
@@ -104,8 +108,12 @@ const RouteComponent = () => {
                     
                     
                     <Route path={'Vlados'} element={<KiryutinVladPage/>} >
-                        <Route path={'test1'} element={<KiryutinTest1/>} />
-                        <Route path={'test2'} element={<KiryutinTest2/>} />
+                        <Route path={'category'} element={<KiryutinCategory/>} />
+                        <Route path={'client'} element={<KiryutinClient/>} />
+                        <Route path={'manufacturer'} element={<KiryutinManufacturer/>} />
+                        <Route path={'order'} element={<KiryutinOrder/>} />
+                        <Route path={'product'} element={<KiryutinProduct/>} />
+                        <Route path={'purchase'} element={<KiryutinPurchase/>} />
                     </Route>
                     
                   

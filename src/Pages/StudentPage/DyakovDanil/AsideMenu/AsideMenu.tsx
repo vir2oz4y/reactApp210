@@ -16,7 +16,7 @@ const AsideMenu = () => {
             </ListItem>
             <ListItem disablePadding>
                 <ListItemButton onClick = {()=>navigate('client')}>
-                    <ListItemText primary="Client" />
+                    <ListItemText primary="ClientPage" />
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -31,7 +31,7 @@ const AsideMenu = () => {
             </ListItem>
             <ListItem disablePadding>
                 <ListItemButton onClick={() => navigate('product')}>
-                    <ListItemText primary="Product" />
+                    <ListItemText primary="ProductPage" />
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
