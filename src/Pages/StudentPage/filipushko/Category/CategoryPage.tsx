@@ -4,26 +4,15 @@ import React, {useEffect, useState} from 'react';
 import {Category} from "./Models"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import FilipushkoPopup from '../../../../Components/filipushko/filipushkoPopup/filipushkoPopup';
+import FilipushkoPopup from '../../../../Components/filipushko/1Popup/1Popup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
 import axios from 'axios';
-import { filipushkoAxios } from '../FilipushkoPage';
+import { filipushkoAxios } from '../filipushkoPage';
 
 const CategoryPage = () => {
     const [categoryList, setcategoryList] = useState<Category[]>([])
-/*    const [ authToken, setAuthToken ] = useState('');
-    const doLogin = () => {
-        axios.post < { authToken:string }>('https://canstudy.ru/orderapi/user/login', {
-            identifier:'05DA6784-075D-4859-9B30-49457DC210EF'
-        })
-            .then(res => {
-                setAuthToken(res.data.authToken)
-            }) 
-    }
-    useEffect(() => {
-        doLogin();
-    }, [])*/
+
     const getCategories = () => {
         filipushkoAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/Category/list')
             .then(res => {

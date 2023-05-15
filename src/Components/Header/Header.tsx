@@ -1,12 +1,12 @@
 import React from 'react';
 import "./Header.scss";
-import {Typography} from "@mui/material";
+import { Typography } from "@mui/material";
 
 type Props = {
-    studentFio?:string
+    studentFio?: string
 }
 
-const Header = ({studentFio}:Props) => {
+const Header = ({ studentFio }: Props) => {
     return (
         <Typography className={"header"}>
             <div className={'header__university'}>
@@ -14,7 +14,7 @@ const Header = ({studentFio}:Props) => {
             </div>
 
             <div className={'header__group'}>
-                Группа - 210 Агеев Александр
+                {studentFio}
             </div>
         </Typography>
     );

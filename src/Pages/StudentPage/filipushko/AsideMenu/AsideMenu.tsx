@@ -1,10 +1,7 @@
+import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import "./AsideMenu.scss";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AsideMenu = () => {
 
@@ -12,6 +9,7 @@ const AsideMenu = () => {
 
     return (
         <List className={'aside'}>
+
             <ListItem disablePadding>
                 <ListItemButton onClick={() => navigate('Category')}>
                     <ListItemText primary="Category" />
@@ -42,6 +40,7 @@ const AsideMenu = () => {
                 </ListItemButton>
             </ListItem>
         </List>
+
     );
 };
 

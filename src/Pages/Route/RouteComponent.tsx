@@ -11,7 +11,7 @@ import TrubnikovTimurPage from "../StudentPage/TrubnikovTimur/TrubnikovTimurPage
 import {default as TrubnikovTest2} from "../StudentPage/TrubnikovTimur/Test2/Test2";
 import { default as TrubnikovTest1 } from "../StudentPage/TrubnikovTimur/Test1/Test1";
 
-import FilipushkoPage from "../StudentPage/filipushko/FilipushkoPage";
+import FilipushkoPage from "../StudentPage/filipushko/filipushkoPage";
 import { default as FilipushkoCategory } from "../StudentPage/filipushko/Category/CategoryPage";
 import { default as FilipushkoClient } from "../StudentPage/filipushko/Client/ClientPage";
 import { default as FilipushkoManufacturer } from "../StudentPage/filipushko/Manufacturer/ManufacturerPage";

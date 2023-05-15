@@ -1,6 +1,6 @@
 import { Button, Modal, Typography } from '@mui/material';
 import React from 'react';
-import "./filipushkoPopup.scss";
+import "./1Popup.scss";
 
 export type IPopup={
     open: boolean,
@@ -35,3 +35,4 @@ const FilipushkoPopup = ({ open, onClose, children,title }:Props) => {
     );
 };
 export default FilipushkoPopup;
+

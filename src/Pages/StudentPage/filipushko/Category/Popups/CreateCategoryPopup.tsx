@@ -1,69 +1,49 @@
-import React, {useEffect, useState} from 'react';
-import FilipushkoPopup, {IPopup} from "../../../../../Components/filipushko/filipushkoPopup/filipushkoPopup";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import {Category} from "../Models";
+import React, { useEffect, useState } from 'react';
+import FilipushkoPopup, { IPopup } from "../../../../../Components/filipushko/1Popup/1Popup";
+import { Button, TextField } from "@mui/material";
+import { Category } from "../Models";
 import axios from 'axios';
-import { filipushkoAxios } from '../../FilipushkoPage';
+import { filipushkoAxios } from '../../filipushkoPage';
 
 type Props = IPopup & {
-    onCreate:(newCategory:Category)=>void;
+    onCreate: (newCategory: Category) => void;
 }
-const CreateCategoryPopup = ({open,onClose, onCreate}:Props) => {
+
+const CreateCategoryPopup = ({ open, onClose, onCreate }: Props) => {
 
     const [categoryName, setCategoryName] = useState('')
-    /*const [authToken, setAuthToken] = useState('');
-    const doLogin = () => {
-        filipushkoAxios.post<{ authToken: string }>('https://canstudy.ru/orderapi/user/login', {
-            identifier: '05DA6784-075D-4859-9B30-49457DC210EF'
-        })
+
+
+
+
+    const createCategory = () => {
+        filipushkoAxios.post<{ item: Category }>('https://canstudy.ru/orderapi/category',
+            {
+                name: categoryName
+            })
             .then(res => {
-                setAuthToken(res.data.authToken)
+                onCreate(res.data.item)
             })
     }
-    useEffect(() => {
-        doLogin();
-    }, [])*/
 
 
-  
-    
-    const createCategory = () => {
-        axios.post<{ item: Category }>('https://canstudy.ru/orderapi/category',{
-            name:categoryName
-        })
+    const onCreateclick = () => {
+        createCategory();
+        onClose()
     }
+
     return (
-        <FilipushkoPopup
-            open={open}
-            title = 'Category create'
-            onClose={() => onClose()}
-        >
-
-            <div style={{
-                display:'flex',
-                flexDirection:'column',
-                gap: '1em'
-            }}
-            >
-
-                <TextField
-                    label="Название кадегории"
-                    variant="outlined"
-                    fullWidth={true}
-                    value={categoryName}
-                    onChange={e=>setCategoryName(e.target.value)}
-                />
-                <div>
-                    <Button
-                        color={'primary'}
-                        variant={"contained"}
-                        onClick={()=>onCreateClick()}
-                    >Создать</Button>
-
+        <FilipushkoPopup title='create Category' open={open} onClose={() => onClose()}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1em' }}>
+                <TextField label="Name Category" variant="standard" fullWidth={true}
+                    value={categoryName} onChange={e => setCategoryName(e.target.value)} />
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button color={'primary'} variant={'contained'} onClick={() => onCreateclick()}>
+                        create
+                    </Button>
                 </div>
             </div>
-        </FilipushkoPopup >
+        </FilipushkoPopup>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import FilipushkoPopup, {IPopup} from "../../../../../Components/filipushko/filipushkoPopup/filipushkoPopup";
+import FilipushkoPopup, {IPopup} from "../../../../../Components/filipushko/1Popup/1Popup";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {Category} from "../Models";
