@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import UdalovPopup, {IPopup} from "../../../../../Components/Udalov/UdalovPopup/UdalovPopup";
+import AgaevPopup, {IPopup} from "../../../../../Components/Agaev/AgaevPopup/AgaevPopup";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Product} from "../Model";
-import { udalovAxios } from '../../UdalovKirillPage';
+import { agaevAxios } from '../../AgaevAlbertPage';
 import {Category} from "../../Category/Models";
 import {Manufacturer} from "../../Manufacturer/Models";
 
@@ -17,7 +17,7 @@ const EditProductPopup = ({open, onClose, Product:ProductEdit, onEdit}: Props) =
 
     const onEditClick = () => {
 
-        udalovAxios.patch<{ item:Product }>('https://canstudy.ru/orderapi/Product',
+        agaevAxios.patch<{ item:Product }>('https://canstudy.ru/orderapi/Product',
             {
                 item:{
                     ...Product
@@ -34,14 +34,14 @@ const EditProductPopup = ({open, onClose, Product:ProductEdit, onEdit}: Props) =
     const [manufactureList, setManufactureList] = useState<Manufacturer[]>([])
 
     const getCategories = () => {
-        udalovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+        agaevAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
             .then(res => {
                 setCategoryList(res.data.items);
             })
     }
 
     const getManufacturies = () => {
-        udalovAxios.get<{ items: Manufacturer[] }>('https://canstudy.ru/orderapi/manufacturer/list')
+        agaevAxios.get<{ items: Manufacturer[] }>('https://canstudy.ru/orderapi/manufacturer/list')
             .then(res => {
                 setManufactureList(res.data.items);
             })
@@ -54,7 +54,7 @@ const EditProductPopup = ({open, onClose, Product:ProductEdit, onEdit}: Props) =
 
 
     return (
-        <UdalovPopup
+        <AgaevPopup
             title={'Изменение клиента'}
             open={open}
             onClose={() => onClose()}
@@ -132,7 +132,7 @@ const EditProductPopup = ({open, onClose, Product:ProductEdit, onEdit}: Props) =
                 </div>
 
             </div>
-        </UdalovPopup>
+        </AgaevPopup>
     );
 };
 

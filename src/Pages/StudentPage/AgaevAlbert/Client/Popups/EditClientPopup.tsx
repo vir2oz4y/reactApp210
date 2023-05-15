@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import UdalovPopup, {IPopup} from "../../../../../Components/Udalov/UdalovPopup/UdalovPopup";
+import AgaevPopup, {IPopup} from "../../../../../Components/Agaev/AgaevPopup/AgaevPopup";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Client} from "../Model";
-import { udalovAxios } from '../../UdalovKirillPage';
+import { agaevAxios } from '../../AgaevAlbertPage';
 
 type Props = IPopup & {
     onEdit: (newClient: Client) => void;
@@ -15,7 +15,7 @@ const EditClientPopup = ({open, onClose, client:clientEdit, onEdit}: Props) => {
 
     const onEditClick = () => {
 
-        udalovAxios.patch<{ item:Client }>('https://canstudy.ru/orderapi/Client',
+        agaevAxios.patch<{ item:Client }>('https://canstudy.ru/orderapi/Client',
             {
                 item:{
                     ...client
@@ -28,7 +28,7 @@ const EditClientPopup = ({open, onClose, client:clientEdit, onEdit}: Props) => {
     }
 
     return (
-        <UdalovPopup
+        <AgaevPopup
             title={'Изменение клиента'}
             open={open}
             onClose={() => onClose()}
@@ -97,7 +97,7 @@ const EditClientPopup = ({open, onClose, client:clientEdit, onEdit}: Props) => {
                 </div>
 
             </div>
-        </UdalovPopup>
+        </AgaevPopup>
     );
 };
 

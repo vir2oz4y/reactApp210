@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Client = () => {
+const Order = () => {
     return (
         <div>
-            Client
+            Order
         </div>
     );
 };
 
-export default Client;
+export default Order;

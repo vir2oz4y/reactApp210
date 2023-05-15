@@ -85,7 +85,12 @@ import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
 import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
 import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
 
-
+import AgaevAlbertPage from "../StudentPage/AgaevAlbert/AgaevAlbertPage";
+import {default as AgaevCategory} from '../StudentPage/AgaevAlbert/Category/Category';
+import {default as AgaevClient} from "../StudentPage/AgaevAlbert/Client/Client";
+import {default as AgaevManufacturer} from "../StudentPage/AgaevAlbert/Manufacturer/Manufacturer";
+import {default as AgaevOrder} from "../StudentPage/AgaevAlbert/Order/Order";
+import {default as AgaevProduct} from "../StudentPage/AgaevAlbert/Product/Product";
 
 const RouteComponent = () => {
     return (
@@ -179,6 +184,13 @@ const RouteComponent = () => {
                         <Route path={'Product'} element={<BezlepkinaProduct />} />
                     </Route>
 
+                    <Route path={'ded'} element={<AgaevAlbertPage/>}>
+                        <Route path={'category'} element={<AgaevCategory/>} />
+                        <Route path={'client'} element={<AgaevClient/>} />
+                        <Route path={'manufacturer'} element={<AgaevManufacturer/>} />
+                        <Route path={'order'} element={<AgaevOrder/>} />
+                        <Route path={'product'} element={<AgaevProduct/>} />
+                    </Route>
                 </Route>
             </Routes>
         </HashRouter>

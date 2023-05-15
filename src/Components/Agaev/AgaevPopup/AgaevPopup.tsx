@@ -1,6 +1,6 @@
 import { Button, Modal, Typography } from '@mui/material';
 import React from 'react';
-import "./UdalovPopup.scss"
+import "./AgaevPopup.scss"
 
 export type IPopup = {
     open: boolean,
@@ -13,20 +13,19 @@ type Props = IPopup & {
 }
 
 
-const UdalovPopup = ({ open, onClose, children, title } : Props) => {
+const AgaevPopup = ({ open, onClose, children, title } : Props) => {
 
-    return (<Modal
-        open={open}
-        onClose={() => onClose()}>
-        <Typography className='udalov_popup'>
-            <div className='udalov_popup__content'>
-                <div className='udalov_popup__content__header'>
+    return (
+        <Modal open={open} onClose={() => onClose()}>
+        <Typography className='agaev_popup'>
+            <div className='agaev_popup__content'>
+                <div className='agaev_popup__content__header'>
                     <div>
                         {title}
                     </div>
                     <div>
                         <Button onClick={() => onClose()}>
-                            Close
+                            Закрыть
                         </Button>
                     </div>
                 </div>
@@ -37,4 +36,4 @@ const UdalovPopup = ({ open, onClose, children, title } : Props) => {
         </Typography>
         </Modal>)
 }
-export default UdalovPopup
+export default AgaevPopup

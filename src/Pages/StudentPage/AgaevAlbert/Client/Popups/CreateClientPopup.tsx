@@ -1,21 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import UdalovPopup, {IPopup} from "../../../../../Components/Udalov/UdalovPopup/UdalovPopup";
+import AgaevPopup, {IPopup} from "../../../../../Components/Agaev/AgaevPopup/AgaevPopup";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Client} from "../Model";
-import axios from 'axios';
-import { udalovAxios } from '../../UdalovKirillPage';
+import { agaevAxios } from '../../AgaevAlbertPage';
 
 type Props = IPopup & {
-    onCreate:(newClient:Client)=>void;
+    onCreate : (newClient:Client) => void;
 }
 
 const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
 
     const createClient = () => {
-        udalovAxios.post<{ item:Client }>('https://canstudy.ru/orderapi/Client',
-            {
-                ...client
-            })
+        agaevAxios.post<{ item:Client }>('https://canstudy.ru/orderapi/Client', { ...client })
             .then(res => {
                 onCreate(res.data.item)
             })
@@ -33,12 +29,11 @@ const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
 
     const onCreateClick = () =>{
         createClient();
-
         onClose();
     }
 
     return (
-        <UdalovPopup
+        <AgaevPopup
             title={'Создание клиента'}
             open={open}
             onClose={() => onClose()}
@@ -58,7 +53,7 @@ const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
                         labelId="sex"
                         value={client.sex?.toString()}
                         label="Пол"
-                        onChange={(e)=>setClient(prev=>({...prev, sex:e.target.value as any}))}
+                        onChange={(e) => setClient(prev=>({...prev, sex: e.target.value as any}))}
                     >
                         <MenuItem value={"0"}>Женский</MenuItem>
                         <MenuItem value={"1"}>Мужской</MenuItem>
@@ -109,7 +104,7 @@ const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
                 </div>
 
             </div>
-        </UdalovPopup>
+        </AgaevPopup>
     );
 };
 

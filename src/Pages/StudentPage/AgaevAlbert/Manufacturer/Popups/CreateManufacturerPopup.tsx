@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import UdalovPopup, {IPopup} from "../../../../../Components/Udalov/UdalovPopup/UdalovPopup";
+import AgaevPopup, {IPopup} from "../../../../../Components/Agaev/AgaevPopup/AgaevPopup";
 import {Button, TextField} from "@mui/material";
 import {Manufacturer} from "../Models";
 import axios from 'axios';
-import { udalovAxios } from '../../UdalovKirillPage';
+import { agaevAxios } from '../../AgaevAlbertPage';
 
 type Props = IPopup & {
     onCreate:(newManufacturer:Manufacturer) => void;
@@ -30,7 +30,7 @@ const CreateManufacturerPopup = ({open, onClose, onCreate}:Props) => {
 
 
     const createManufacturer = () => {
-        udalovAxios.post<{ item: Manufacturer }>('https://canstudy.ru/orderapi/manufacturer',
+        agaevAxios.post<{ item: Manufacturer }>('https://canstudy.ru/orderapi/manufacturer',
             {
                 name: manufacturer.name,
                 city: manufacturer.city,
@@ -56,7 +56,7 @@ const CreateManufacturerPopup = ({open, onClose, onCreate}:Props) => {
     }
 
     return (
-        <UdalovPopup title='Создание категории' open={open} onClose={() => onClose()}>
+        <AgaevPopup title='Создание категории' open={open} onClose={() => onClose()}>
             <div style = {{display: 'flex', flexDirection: 'column', gap: '1em'}}>
                 <TextField label="Название Поставщика" variant="standard" fullWidth={true}
                            value = {manufacturer.name} onChange={e => setManufacturer(prev => ({
@@ -78,7 +78,7 @@ const CreateManufacturerPopup = ({open, onClose, onCreate}:Props) => {
                     </Button>
                 </div>
             </div>
-        </UdalovPopup>
+        </AgaevPopup>
     );
 };
 

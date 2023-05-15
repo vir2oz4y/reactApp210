@@ -96,6 +96,13 @@ const StudentsPage = () => {
                     navigateTo={'/Bezlepkina'}
                 />
 
+                <StudentElement
+                    fio={'Агаев Альберт Алиметович'}
+                    imageSrc={'https://avatars.githubusercontent.com/u/106873790'}
+                    description={'the cutest girl'}
+                    navigateTo={'ded'}
+                />
+
             </Stack>
         </div>
 
