@@ -39,10 +39,10 @@ import {default as OndyshevPurchase} from "../StudentPage/OndyshevDmitry/Purchas
 
 import SimakovMatveyPage from "../StudentPage/SimakovMatvey/SimakovMatveyPage";
 import {default as SimakovCategory} from '../StudentPage/SimakovMatvey/Category/CategoryPage';
-import {default as SimakovClient} from "../StudentPage/SimakovMatvey/Client/Client";
-import {default as SimakovManufacturer} from "../StudentPage/SimakovMatvey/Manufacturer/Manufacturer";
+import {default as SimakovClient} from "../StudentPage/SimakovMatvey/Client/ClientPage";
+import {default as SimakovManufacturer} from "../StudentPage/SimakovMatvey/Manufacturer/ManufacturerPage";
 import {default as SimakovOrder} from "../StudentPage/SimakovMatvey/Order/Order";
-import {default as SimakovProduct} from "../StudentPage/SimakovMatvey/Product/Product";
+import {default as SimakovProduct} from "../StudentPage/SimakovMatvey/Product/ProductPage";
 import {default as SimakovPurchase} from "../StudentPage/SimakovMatvey/Purchase/Purchase";
 
 import PepelevSergeyPage from "../StudentPage/PepelevSergey/PepelevSergeyPage";

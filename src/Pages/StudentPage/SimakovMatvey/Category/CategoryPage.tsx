@@ -1,25 +1,143 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import IconButton from '@mui/material/IconButton'
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
 import { Category } from './models'
+import Button from '@mui/material/Button'
+import CreateCategoryPopup from './Popups/CreateCategoryPopup'
+import EditCategoryPopup from './Popups/EditCategoryPopup'
+import { simakovAxios } from '../SimakovMatveyPage'
 
 const CategoryPage = () => {
-	const [categoryList, setcategoryList] = useState<Category[]>([
+	const [categoryList, setCategoryList] = useState<Category[]>([])
+
+	const getCategoriesFromHost = () => {
+		simakovAxios
+			.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+			.then((res) => {
+				setCategoryList(res.data.items)
+			})
+	}
+
+	const removeCategoryFromHost = (id: number) => {
+		simakovAxios
+			.delete('https://canstudy.ru/orderapi/category/' + id)
+			.then(() => {
+				setCategoryList((prev) => prev.filter((el) => el.id !== id))
+			})
+	}
+
+	useEffect(() => {
+		getCategoriesFromHost()
+	}, [])
+
+	const onDeleteClick = (id: number) => {
+		removeCategoryFromHost(id)
+	}
+
+	const onEditClick = (id: number) => {
+		const category = categoryList.find((el) => el.id === id)!
+		setEditCategory(category)
+	}
+
+	const onCreate = (category: Category) => {
+		setCategoryList((prev) => [...prev, category])
+	}
+
+	const onEdit = (category: Category) => {
+		setCategoryList((prev) => {
+			let curCategory = prev.find((el) => el.id === category.id)
+            if (!curCategory) curCategory = { name: 'default', id: category.id  }
+			curCategory.name = category.name // can be undefined
+			return [...prev]
+		})
+	}
+
+	const columns: GridColDef[] = [
 		{
-			id: 0,
-			name: 'Категория 1',
+			field: 'id',
+			headerName: 'ID',
 		},
 		{
-			id: 1,
-			name: 'Категория 2',
+			field: 'name',
+			headerName: 'Name',
+			flex: 1,
 		},
-	])
+		{
+			field: '',
+			headerName: '',
+			renderCell: (e: any) => {
+				return (
+					<div style={{ display: 'flex', gap: '10xp' }}>
+						<IconButton onClick={() => onEditClick(e.row.id)} aria-label="edit">
+							<EditIcon />
+						</IconButton>
+						<IconButton
+							onClick={() => onDeleteClick(e.row.id)}
+							aria-label="delete"
+						>
+							<DeleteIcon />
+						</IconButton>
+					</div>
+				)
+			},
+		},
+	]
+
+	const [createPopupOpened, setCreatePopupOpened] = useState(false)
+	const [editCategory, setEditCategory] = useState<Category | null>(null)
 
 	return (
-		<div>
-			<h1>Category page</h1>
-			<div>
-				{categoryList.map((el) => (
-					<div>{el.name}</div>
-				))}
+		<div style={{ width: '100%' }}>
+			{createPopupOpened && (
+				<CreateCategoryPopup
+					open={createPopupOpened}
+					onClose={() => setCreatePopupOpened(false)}
+					onCreate={(newCategory) => onCreate(newCategory)}
+				/>
+			)}
+
+			{editCategory !== null && (
+				<EditCategoryPopup
+					open={editCategory !== null}
+					onClose={() => setEditCategory(null)}
+					category={editCategory}
+					onEdit={(editCategory) => onEdit(editCategory)}
+				/>
+			)}
+
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+				}}
+			>
+				<h1>Категории товаров:</h1>
+				<Button
+					color={'primary'}
+					variant={'contained'}
+					size="medium"
+					onClick={() => setCreatePopupOpened(true)}
+				>
+					Создать категорию
+				</Button>
+			</div>
+			<div style={{ height: '90vh', width: '100%' }}>
+				<DataGrid
+					rows={categoryList}
+					columns={columns}
+					initialState={{
+						pagination: {
+							paginationModel: {
+								pageSize: 5,
+							},
+						},
+					}}
+					pageSizeOptions={[5]}
+					disableRowSelectionOnClick
+				/>
 			</div>
 		</div>
 	)
