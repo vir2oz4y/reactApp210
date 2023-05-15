@@ -53,10 +53,6 @@ import Test2 from "../StudentPage/KryuchkovNick/Test2/Test2";
 import CategoryPage from "../StudentPage/KryuchkovNick/Category/CategoryPage";
 
 
-import AgeevAlexandrPage from "../StudentPage/AgeevAlezander/AgeevAlexandrPage";
-import test1 from "../StudentPage/AgeevAlezander/test1/Test1";
-import test2 from "../StudentPage/AgeevAlezander/test2/Test2";
-
 
 import ShchegolevaEkaterinaPage from '../StudentPage/ShchegolevaEkaterina/ShchegolevaEkaterinaPage';
 import ShchegolevaCategory from '../StudentPage/ShchegolevaEkaterina/Category/Category';
@@ -82,8 +78,10 @@ import BezlepkinaProduct from '../StudentPage/Bezlepkina/Product/Product';
 import BezlepkinaManufacturer from '../StudentPage/Bezlepkina/Manufacturer/Manufacturer';
 
 import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
-import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
-import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
+import { default as DyakovCategory } from "../StudentPage/DyakovDanil/Category/CategoryPage";
+import { default as DyakovProducts } from "../StudentPage/DyakovDanil/Product/ProductPage";
+import { default as DyakovManufacturer } from "../StudentPage/DyakovDanil/Manufacture/ManufacturePage";
+import { default as DyakovClient } from "../StudentPage/DyakovDanil/Client/ClientPage";
 
 
 
@@ -147,16 +145,13 @@ const RouteComponent = () => {
                     </Route>
 
 
-                    <Route path={'dyakov'} element={<DyakovDanilPage />} >
-                        <Route path={'test1'} element={<DyakovTest1 />} />
-                        <Route path={'test2'} element={<DyakovTest2 />} />
+                    <Route path={'Dyakov'} element={<DyakovDanilPage />} >
+                        <Route path={'category'} element={<DyakovCategory />} />
+                        <Route path={'client'} element={<DyakovClient />} />
+                        <Route path={'product'} element={<DyakovProducts />} />
+                        <Route path={'manufacture'} element={<DyakovManufacturer />} />
                     </Route>
 
-                    <Route path={'Ageev'} element={<AgeevAlexandrPage />} >
-                        <Route path={'test1'} element={<Test1 />} />
-                        <Route path={'test2'} element={<Test2 />} />
-                    </Route>
-                    
                     <Route path={'Shchegoleva'} element={<ShchegolevaEkaterinaPage/>} >
                         <Route path={'Category'} element={<ShchegolevaCategory />} />
                         <Route path={'Client'} element={<ShchegolevaClient />} />
