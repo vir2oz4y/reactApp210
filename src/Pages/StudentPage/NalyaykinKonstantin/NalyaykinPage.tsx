@@ -14,7 +14,7 @@ const NalyaykinPage = () => {
 
     const doLogin = () => {
         axios.post<{ authToken: string }>('https://canstudy.ru/orderapi/user/login', {
-            identifier: 'dd2954b5-9146-4dac-8fb6-744edc28d96b'
+            identifier: '4e0e4026-e041-435a-b1e1-2e891d4d3681'
         })
             .then(res => {
                 nalyaykinAxios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.authToken
