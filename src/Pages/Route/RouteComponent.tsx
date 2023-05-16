@@ -35,7 +35,15 @@ import {default as OndyshevClient} from "../StudentPage/OndyshevDmitry/Client/Cl
 import {default as OndyshevManufacturer} from "../StudentPage/OndyshevDmitry/Manufacturer/Manufacturer";
 import {default as OndyshevOrder} from "../StudentPage/OndyshevDmitry/Order/Order";
 import {default as OndyshevProduct} from "../StudentPage/OndyshevDmitry/Product/Product";
-import {default as OndyshevPurchase} from "../StudentPage/OndyshevDmitry/Purchase/Purchase";
+import { default as OndyshevPurchase } from "../StudentPage/OndyshevDmitry/Purchase/Purchase";
+
+import KurgankovPage from "../StudentPage/Kurgankov/KurgankovPage";
+import { default as KurgankovCategory } from '../StudentPage/Kurgankov/Category/CategoryPage';
+import { default as KurgankovClient } from "../StudentPage/Kurgankov/Client/Client";
+import { default as KurgankovManufacturer } from "../StudentPage/Kurgankov/Manufacturer/Manufacturer";
+import { default as KurgankovOrder } from "../StudentPage/Kurgankov/Order/Order";
+import { default as KurgankovProduct } from "../StudentPage/Kurgankov/Product/Product";
+import { default as KurgankovPurchase } from "../StudentPage/Kurgankov/Purchase/Purchase";
 
 import SimakovMatveyPage from "../StudentPage/SimakovMatvey/SimakovMatveyPage";
 import {default as SimakovCategory} from '../StudentPage/SimakovMatvey/Category/CategoryPage';
@@ -116,6 +124,15 @@ const RouteComponent = () => {
                         <Route path={'order'} element={<OndyshevOrder/>} />
                         <Route path={'product'} element={<OndyshevProduct/>} />
                         <Route path={'purchase'} element={<OndyshevPurchase/>} />
+                    </Route>
+
+                    <Route path={'kurgankov'} element={<KurgankovPage></KurgankovPage>}>
+                        <Route path={'category'} element={<KurgankovCategory />} />
+                        <Route path={'client'} element={<KurgankovClient />} />
+                        <Route path={'manufacturer'} element={<KurgankovManufacturer />} />
+                        <Route path={'order'} element={<KurgankovOrder />} />
+                        <Route path={'product'} element={<KurgankovProduct />} />
+                        <Route path={'purchase'} element={<KurgankovPurchase />} />
                     </Route>
 
                     <Route path={'simakov'} element={<SimakovMatveyPage></SimakovMatveyPage>}>

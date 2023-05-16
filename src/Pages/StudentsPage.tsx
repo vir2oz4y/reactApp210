@@ -17,6 +17,12 @@ const StudentsPage = () => {
                     imageSrc={'https://fanibani.ru/images/wp-content/uploads/2017/06/Volk-42.jpg'}
                     navigateTo={'/teacher'}
                 />
+                <StudentElement
+                    fio={'Курганков Егор Юрьевич'}
+                    description={'смотрящий'}
+                    imageSrc={'https://otvet.imgsmail.ru/download/181728987_1307a7339ed9ef172ee1d11c29323f2b_800.jpg'}
+                    navigateTo={'/kurgankov'}
+                />
 
                 <StudentElement
                     fio={'Ондышев Дмитрий Витальевич'}
