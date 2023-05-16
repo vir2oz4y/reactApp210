@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import AgeevPopup, {IPopup} from "../../../../../Components/Ageev/AgeevPopup/AgeevPopup";
+import TrubnikovPopup, {IPopup} from "../../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup";
 import {Button, TextField} from "@mui/material";
 import {Category} from "../models";
-import {ageevAxios} from "../../AgeevAlexandrPage";
+import {trubnikovAxios} from "../../TrubnikovTimurPage";
 
 type Props = IPopup & {
     onEdit: (newCategory: Category) => void;
@@ -15,7 +15,7 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}: Props) => {
 
     const onEditClick = () => {
 
-        ageevAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
+        trubnikovAxios.patch<{ item:Category }>('https://canstudy.ru/orderapi/category',
             {
                 item:{
                     id:category.id,
@@ -29,7 +29,7 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}: Props) => {
     }
 
     return (
-        <AgeevPopup
+        <TrubnikovPopup
             title={'Создание категории'}
             open={open}
             onClose={() => onClose()}
@@ -62,7 +62,7 @@ const EditCategoryPopup = ({open, onClose, category, onEdit}: Props) => {
                 </div>
 
             </div>
-        </AgeevPopup>
+        </TrubnikovPopup>
     );
 };
 

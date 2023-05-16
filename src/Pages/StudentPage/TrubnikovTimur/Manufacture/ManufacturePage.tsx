@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 //import manufacture from "./models";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {ageevAxios} from '../AgeevAlexandrPage';
+import {trubnikovAxios} from '../TrubnikovTimurPage';
 import {Manufacture} from "./models";
 import CreateManufacturePopup from "./Popups/CreateManufacturePopup";
 import EditManufacturePopup from "./Popups/EditManufacturePopup";
@@ -14,7 +14,7 @@ const ManufacturePage = () => {
     const [manufactureList, setManufactureList] = useState<Manufacture[]>([])
 
     const getManufacturies = () => {
-        ageevAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
+        trubnikovAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
             .then(res => {
                 setManufactureList(res.data.items);
             })
@@ -28,7 +28,7 @@ const ManufacturePage = () => {
 
     const onDeleteClick = (id: number) => {
 
-        ageevAxios.delete(`https://canstudy.ru/orderapi/manufacturer/${id}`)
+        trubnikovAxios.delete(`https://canstudy.ru/orderapi/manufacturer/${id}`)
             .then(res => {
                 setManufactureList(prev =>
                     prev.filter(el => el.id !== id)

@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {Client} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {ageevAxios} from '../AgeevAlexandrPage';
+import {trubnikovAxios} from '../TrubnikovTimurPage';
 import CreateClientPopup from "./Popups/CreateClientPopup";
 import EditClientPopup from "./Popups/EditClientPopup";
 import MaleIcon from '@mui/icons-material/Male';
@@ -15,7 +15,7 @@ const ClientPage = () => {
     const [ClientList, setClientList] = useState<Client[]>([])
 
     const getClients = () => {
-        ageevAxios.get<{ items: Client[] }>('https://canstudy.ru/orderapi/Client/list')
+        trubnikovAxios.get<{ items: Client[] }>('https://canstudy.ru/orderapi/Client/list')
             .then(res => {
                 setClientList(res.data.items);
             })
@@ -28,7 +28,7 @@ const ClientPage = () => {
 
 
     const onDeleteClick = (id: number) => {
-        ageevAxios.delete(`https://canstudy.ru/orderapi/Client/${id}`)
+        trubnikovAxios.delete(`https://canstudy.ru/orderapi/Client/${id}`)
             .then(res => {
                 setClientList(prev =>
                     prev.filter(el => el.id !== id)

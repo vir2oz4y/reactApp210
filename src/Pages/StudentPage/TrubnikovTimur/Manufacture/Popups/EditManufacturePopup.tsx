@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import AgeevPopup, {IPopup} from "../../../../../Components/Ageev/AgeevPopup/AgeevPopup";
+import TimurPopup, {IPopup} from "../../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup";
 import {Button, TextField} from "@mui/material";
 import {Manufacture} from "../models";
-import {ageevAxios} from "../../AgeevAlexandrPage";
+import {trubnikovAxios} from "../../TrubnikovTimurPage";
 import {Category} from "../../Category/models";
 
 type Props = IPopup & {
@@ -15,7 +15,7 @@ const EditManufacturePopup = ({open, onClose, Manufacture, onEdit}: Props) => {
     const [ManufactureEdit, setManufactureEdit] = useState(Manufacture)
 
     const onEditClick = () => {
-        ageevAxios.patch<{ item:Manufacture }>('https://canstudy.ru/orderapi/manufacturer',
+        trubnikovAxios.patch<{ item:Manufacture }>('https://canstudy.ru/orderapi/manufacturer',
             {
                 item:{
                     id:ManufactureEdit.id,
@@ -31,7 +31,7 @@ const EditManufacturePopup = ({open, onClose, Manufacture, onEdit}: Props) => {
     }
 
     return (
-        <AgeevPopup
+        <TimurPopup
             title={'Создание категории'}
             open={open}
             onClose={() => onClose()}
@@ -84,7 +84,7 @@ const EditManufacturePopup = ({open, onClose, Manufacture, onEdit}: Props) => {
                 </div>
 
             </div>
-        </AgeevPopup>
+        </TimurPopup>
     );
 };
 

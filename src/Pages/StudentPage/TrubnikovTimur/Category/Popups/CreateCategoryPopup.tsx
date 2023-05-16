@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import AgeevPopup, {IPopup} from "../../../../../Components/Ageev/AgeevPopup/AgeevPopup";
+import TrubnikovPopup, {IPopup} from "../../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup";
 import {Button, TextField} from "@mui/material";
 import {Category} from "../models";
 import axios from 'axios';
-import { ageevAxios } from '../../AgeevAlexandrPage';
+import { trubnikovAxios } from '../../TrubnikovTimurPage';
 
 type Props = IPopup & {
     onCreate:(newCategory:Category)=>void;
@@ -12,7 +12,7 @@ type Props = IPopup & {
 const CreateCategoryPopup = ({open, onClose, onCreate}: Props) => {
 
     const createCategory = () => {
-        ageevAxios.post<{ item:Category }>('https://canstudy.ru/orderapi/category',
+        trubnikovAxios.post<{ item:Category }>('https://canstudy.ru/orderapi/category',
             {
                 name:categoryName
             })
@@ -31,7 +31,7 @@ const CreateCategoryPopup = ({open, onClose, onCreate}: Props) => {
     }
 
     return (
-        <AgeevPopup
+        <TrubnikovPopup
             title={'Создание категории'}
             open={open}
             onClose={() => onClose()}
@@ -62,7 +62,7 @@ const CreateCategoryPopup = ({open, onClose, onCreate}: Props) => {
                 </div>
 
             </div>
-        </AgeevPopup>
+        </TrubnikovPopup>
     );
 };
 

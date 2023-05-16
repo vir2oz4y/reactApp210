@@ -1,6 +1,6 @@
 import { Button, Modal, Typography } from '@mui/material';
 import React from 'react';
-import "./AgeevPopup.scss";
+import "./TrubnikovPopup.scss";
 
 export type IPopup = {
     open: boolean,
@@ -13,16 +13,16 @@ type Props = IPopup & {
     title: string
 }
 
-const AgeevPopup = ({ open, onClose, children, title}: Props) => {
+const TrubnikovPopup = ({ open, onClose, children, title}: Props) => {
 
 
     return (<Modal
         open={open}
         onClose={()=>onClose()}
     >
-        <Typography className='ageev_popup'>
-            <div className='ageev_popup__content'>
-                <div className='ageev_popup__content__header'>
+        <Typography className='trubnikov_popup'>
+            <div className='trubnikov_popup__content'>
+                <div className='trubnikov_popup__content__header'>
                     <div>
                         {title}
                     </div>
@@ -46,4 +46,4 @@ const AgeevPopup = ({ open, onClose, children, title}: Props) => {
     </Modal>)
 }
 
-export default AgeevPopup;
+export default TrubnikovPopup;

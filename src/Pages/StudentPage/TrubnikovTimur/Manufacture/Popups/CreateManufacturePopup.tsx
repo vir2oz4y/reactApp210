@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import AgeevPopup, {IPopup} from "../../../../../Components/Ageev/AgeevPopup/AgeevPopup";
+import TrubnikovPopup, {IPopup} from "../../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup";
 import {Button, TextField} from "@mui/material";
 import {Manufacture} from "../models";
-import {ageevAxios} from '../../AgeevAlexandrPage';
+import {trubnikovAxios} from '../../TrubnikovTimurPage';
 
 type Props = IPopup & {
     onCreate: (newManufacture: Manufacture) => void;
@@ -11,7 +11,7 @@ type Props = IPopup & {
 const CreateManufacturePopup = ({open, onClose, onCreate}: Props) => {
 
     const createManufacture = () => {
-        ageevAxios.post<{ item: Manufacture }>('https://canstudy.ru/orderapi/manufacturer',
+        trubnikovAxios.post<{ item: Manufacture }>('https://canstudy.ru/orderapi/manufacturer',
             {
                 name: manufacture.name,
                 city: manufacture.city,
@@ -36,7 +36,7 @@ const CreateManufacturePopup = ({open, onClose, onCreate}: Props) => {
     }
 
     return (
-        <AgeevPopup
+        <TrubnikovPopup
             title={'Создание категории'}
             open={open}
             onClose={() => onClose()}
@@ -89,7 +89,7 @@ const CreateManufacturePopup = ({open, onClose, onCreate}: Props) => {
                 </div>
 
             </div>
-        </AgeevPopup>
+        </TrubnikovPopup>
     );
 };
 

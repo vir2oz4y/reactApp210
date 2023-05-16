@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import AgeevPopup, {IPopup} from "../../../../../Components/Ageev/AgeevPopup/AgeevPopup";
+import TrubnikovPopup, {IPopup} from "../../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Client} from "../models";
-import {ageevAxios} from "../../AgeevAlexandrPage";
+import {trubnikovAxios} from "../../TrubnikovTimurPage";
 
 type Props = IPopup & {
     onEdit: (newClient: Client) => void;
@@ -15,7 +15,7 @@ const EditClientPopup = ({open, onClose, client:clientEdit, onEdit}: Props) => {
 
     const onEditClick = () => {
 
-        ageevAxios.patch<{ item:Client }>('https://canstudy.ru/orderapi/Client',
+        trubnikovAxios.patch<{ item:Client }>('https://canstudy.ru/orderapi/Client',
             {
                 item:{
                    ...client
@@ -28,7 +28,7 @@ const EditClientPopup = ({open, onClose, client:clientEdit, onEdit}: Props) => {
     }
 
     return (
-        <AgeevPopup
+        <TrubnikovPopup
             title={'Изменение клиента'}
             open={open}
             onClose={() => onClose()}
@@ -97,7 +97,7 @@ const EditClientPopup = ({open, onClose, client:clientEdit, onEdit}: Props) => {
                 </div>
 
             </div>
-        </AgeevPopup>
+        </TrubnikovPopup>
     );
 };
 

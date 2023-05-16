@@ -1,43 +1,35 @@
+import {List, ListItem, ListItemButton, ListItemText} from '@mui/material';
 import React from 'react';
-import {List, ListItem, ListItemButton, ListItemText} from "@mui/material";
 import "./AsideMenu.scss";
 import {useNavigate} from "react-router-dom";
+
 const AsideMenu = () => {
 
     const navigate = useNavigate();
 
-
     return (
-        <List className ={'aside'}>
-            
+        <List className={'aside'}>
+
             <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('category')}>
-                    <ListItemText primary="Category" />
+                <ListItemButton onClick={()=>navigate('category')}>
+                    <ListItemText primary="Категории" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton onClick={() => navigate('manufacture')}>
+                    <ListItemText primary="Производители" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton onClick={() => navigate('client')}>
+                    <ListItemText primary="Клиенты" />
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('test2')}>
-                    <ListItemText primary="Client" />
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('test2')}>
-                    <ListItemText primary="Manufacturer" />
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('test2')}>
-                    <ListItemText primary="Order" />
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('test2')}>
-                    <ListItemText primary="Purchase" />
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate('test2')}>
-                    <ListItemText primary="User" />
+                <ListItemButton onClick={() => navigate('product')}>
+                    <ListItemText primary="Товары" />
                 </ListItemButton>
             </ListItem>
         </List>

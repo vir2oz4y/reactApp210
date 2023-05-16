@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import AgeevPopup, {IPopup} from "../../../../../Components/Ageev/AgeevPopup/AgeevPopup";
+import TrubnikovPopup, {IPopup} from "../../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Client} from "../models";
 import axios from 'axios';
-import { ageevAxios } from '../../AgeevAlexandrPage';
+import { trubnikovAxios } from '../../TrubnikovTimurPage';
 
 type Props = IPopup & {
     onCreate:(newClient:Client)=>void;
@@ -12,7 +12,7 @@ type Props = IPopup & {
 const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
 
     const createClient = () => {
-        ageevAxios.post<{ item:Client }>('https://canstudy.ru/orderapi/Client',
+        trubnikovAxios.post<{ item:Client }>('https://canstudy.ru/orderapi/Client',
             {
                 ...client
             })
@@ -38,7 +38,7 @@ const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
     }
 
     return (
-        <AgeevPopup
+        <TrubnikovPopup
             title={'Создание клиента'}
             open={open}
             onClose={() => onClose()}
@@ -109,7 +109,7 @@ const CreateClientPopup = ({open, onClose, onCreate}: Props) => {
                 </div>
 
             </div>
-        </AgeevPopup>
+        </TrubnikovPopup>
     );
 };
 

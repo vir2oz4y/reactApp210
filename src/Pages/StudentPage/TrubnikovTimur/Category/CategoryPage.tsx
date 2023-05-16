@@ -4,18 +4,19 @@ import React, {useEffect, useState} from 'react';
 import {Category} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import AgeevAlexandrPage, { ageevAxios } from '../AgeevAlexandrPage';
-import AgeevPopup from '../../../../Components/Ageev/AgeevPopup/AgeevPopup';
+import TrubnikovTimurPage, { trubnikovAxios } from '../TrubnikovTimurPage';
+import TrubnikovPopup from '../../../../Components/Trubnikov/TrubnikovPopup/TrubnikovPopup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
 import axios from 'axios';
+
 
 const CategoryPage = () => {
 
     const [categoryList, setCategoryList] = useState<Category[]>([])
 
     const getCategories = () => {
-        ageevAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+        trubnikovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
             .then(res => {
                 setCategoryList(res.data.items);
             })
@@ -29,7 +30,7 @@ const CategoryPage = () => {
 
 
     const onDeleteClick = (id: number) => {
-        ageevAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
+        trubnikovAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
             .then(res => {
                 setCategoryList(prev =>
                     prev.filter(el => el.id !== id)

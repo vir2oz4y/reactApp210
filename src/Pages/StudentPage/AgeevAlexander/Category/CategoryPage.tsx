@@ -2,7 +2,6 @@ import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import React, {useEffect, useState} from 'react';
 import {Category} from './models';
-//import Category from "./models";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AgeevAlexandrPage, { ageevAxios } from '../AgeevAlexandrPage';

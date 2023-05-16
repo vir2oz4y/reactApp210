@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {Product} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {ageevAxios} from '../AgeevAlexandrPage';
+import {trubnikovAxios} from '../TrubnikovTimurPage';
 import CreateProductPopup from "./Popups/CreateProductPopup";
 import EditProductPopup from "./Popups/EditProductPopup";
 //import CreateProductPopup from "./Popups/CreateProductPopup";
@@ -16,7 +16,7 @@ const ProductPage = () => {
     const [ProductList, setProductList] = useState<Product[]>([])
 
     const getProducts = () => {
-        ageevAxios.get<{ items: Product[] }>('https://canstudy.ru/orderapi/Product/list')
+        trubnikovAxios.get<{ items: Product[] }>('https://canstudy.ru/orderapi/Product/list')
             .then(res => {
                 setProductList(res.data.items);
             })
@@ -29,7 +29,7 @@ const ProductPage = () => {
 
 
     const onDeleteClick = (id: number) => {
-        ageevAxios.delete(`https://canstudy.ru/orderapi/Product/${id}`)
+        trubnikovAxios.delete(`https://canstudy.ru/orderapi/Product/${id}`)
             .then(res => {
                 setProductList(prev =>
                     prev.filter(el => el.id !== id)
