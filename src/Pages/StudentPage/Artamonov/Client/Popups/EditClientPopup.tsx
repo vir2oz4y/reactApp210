@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import KurgankovPopup, { IPopup } from "../../../../../Components/Artamonov/ArtamonovPopup/ArtamonovPopup";
+import ArtamonovPopup, { IPopup } from "../../../../../Components/Artamonov/ArtamonovPopup/ArtamonovPopup";
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { Client } from "../models";
 import { artamonovAxios } from "../../ArtamonovPage";
@@ -28,7 +28,7 @@ const EditClientPopup = ({ open, onClose, client: clientEdit, onEdit }: Props) =
     }
 
     return (
-        <KurgankovPopup
+        <ArtamonovPopup
             title={'Изменение клиента'}
             open={open}
             onClose={() => onClose()}
@@ -97,7 +97,7 @@ const EditClientPopup = ({ open, onClose, client: clientEdit, onEdit }: Props) =
                 </div>
 
             </div>
-        </KurgankovPopup>
+        </ArtamonovPopup>
     );
 };
 

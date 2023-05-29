@@ -31,7 +31,7 @@ const ArtamonovPage = () => {
 
     return (
         <div>
-            <Header studentFio={'Курганков Егор'} />
+            <Header studentFio={'Артамонов Алексей'} />
 
             <ContentBlock>
                 <div className={'self_page_content'}>

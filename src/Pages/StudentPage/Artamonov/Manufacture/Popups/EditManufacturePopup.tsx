@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import KurgankovPopup, { IPopup } from "../../../../../Components/Artamonov/ArtamonovPopup/ArtamonovPopup";
+import ArtamonovPopup, { IPopup } from "../../../../../Components/Artamonov/ArtamonovPopup/ArtamonovPopup";
 import { Button, TextField } from "@mui/material";
 import { Manufacture } from "../models";
 import { artamonovAxios } from "../../ArtamonovPage";
@@ -31,7 +31,7 @@ const EditManufacturePopup = ({ open, onClose, Manufacture, onEdit }: Props) => 
     }
 
     return (
-        <KurgankovPopup
+        <ArtamonovPopup
             title={'Создание категории'}
             open={open}
             onClose={() => onClose()}
@@ -84,7 +84,7 @@ const EditManufacturePopup = ({ open, onClose, Manufacture, onEdit }: Props) => 
                 </div>
 
             </div>
-        </KurgankovPopup>
+        </ArtamonovPopup>
     );
 };
 
