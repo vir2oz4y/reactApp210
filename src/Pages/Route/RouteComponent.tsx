@@ -40,7 +40,7 @@ import { default as OndyshevPurchase } from "../StudentPage/OndyshevDmitry/Purch
 import KurgankovPage from "../StudentPage/Kurgankov/KurgankovPage";
 import { default as KurgankovCategory } from '../StudentPage/Kurgankov/Category/CategoryPage';
 import { default as KurgankovClient } from "../StudentPage/Kurgankov/Client/Client";
-import { default as KurgankovManufacturer } from "../StudentPage/Kurgankov/Manufacturer/Manufacturer";
+import { default as KurgankovManufacturer } from "../StudentPage/Kurgankov/Manufacture/ManufacturePage";
 import { default as KurgankovOrder } from "../StudentPage/Kurgankov/Order/Order";
 import { default as KurgankovProduct } from "../StudentPage/Kurgankov/Product/Product";
 import { default as KurgankovPurchase } from "../StudentPage/Kurgankov/Purchase/Purchase";
@@ -101,6 +101,15 @@ import DyakovDanilPage from "../StudentPage/DyakovDanil/DyakovDanilPage";
 import { default as DyakovTest2 } from "../StudentPage/DyakovDanil/Test2/Test2";
 import { default as DyakovTest1 } from "../StudentPage/DyakovDanil/Test1/Test1";
 
+import ArtamonovPage from "../StudentPage/Artamonov/ArtamonovPage";
+import { default as ArtamonovCategory } from '../StudentPage/Artamonov/Category/CategoryPage';
+import { default as ArtamonovClient } from "../StudentPage/Artamonov/Client/Client";
+import { default as ArtamonovManufacturer } from "../StudentPage/Artamonov/Manufacture/ManufacturePage";
+import { default as ArtamonovOrder } from "../StudentPage/Artamonov/Order/Order";
+import { default as ArtamonovProduct } from "../StudentPage/Artamonov/Product/Product";
+import { default as ArtamonovPurchase } from "../StudentPage/Artamonov/Purchase/Purchase";
+
+
 
 
 const RouteComponent = () => {
@@ -126,10 +135,10 @@ const RouteComponent = () => {
                         <Route path={'purchase'} element={<OndyshevPurchase/>} />
                     </Route>
 
-                    <Route path={'kurgankov'} element={<KurgankovPage></KurgankovPage>}>
+                    <Route path={'artamonov'} element={<KurgankovPage></KurgankovPage>}>
                         <Route path={'category'} element={<KurgankovCategory />} />
                         <Route path={'client'} element={<KurgankovClient />} />
-                        <Route path={'manufacturer'} element={<KurgankovManufacturer />} />
+                        <Route path={'manufacture'} element={<KurgankovManufacturer />} />
                         <Route path={'order'} element={<KurgankovOrder />} />
                         <Route path={'product'} element={<KurgankovProduct />} />
                         <Route path={'purchase'} element={<KurgankovPurchase />} />
@@ -211,6 +220,15 @@ const RouteComponent = () => {
                         <Route path={'Manufacturer'} element={<BezlepkinaManufacturer />} />
                         <Route path={'Order'} element={<BezlepkinaOrder />} />
                         <Route path={'Product'} element={<BezlepkinaProduct />} />
+                    </Route>
+
+                    <Route path={'artamonov'} element={<ArtamonovPage></ArtamonovPage>}>
+                        <Route path={'category'} element={<ArtamonovCategory />} />
+                        <Route path={'client'} element={<ArtamonovClient />} />
+                        <Route path={'manufacture'} element={<ArtamonovManufacturer />} />
+                        <Route path={'order'} element={<ArtamonovOrder />} />
+                        <Route path={'product'} element={<ArtamonovProduct />} />
+                        <Route path={'purchase'} element={<ArtamonovPurchase />} />
                     </Route>
 
                 </Route>

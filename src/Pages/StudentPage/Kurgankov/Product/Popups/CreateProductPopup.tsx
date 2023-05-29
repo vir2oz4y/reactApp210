@@ -4,7 +4,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@m
 import { Product } from "../models";
 import { kurgankovAxios } from '../../KurgankovPage';
 import { Category } from "../../Category/models";
-import { Manufacture } from "../../Manufacturer/models";
+import { Manufacture } from "../../Manufacture/models";
 
 type Props = IPopup & {
     onCreate: (newProduct: Product) => void;

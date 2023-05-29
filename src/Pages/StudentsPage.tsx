@@ -103,6 +103,13 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
+                    fio={'Артамонов Алексей Витальевич'}
+                    description={'безумие'}
+                    imageSrc={'https://fanibani.ru/images/wp-content/uploads/2017/06/Volk-42.jpg'}
+                    navigateTo={'/artamonov'}
+                />
+
+                <StudentElement
                     fio={'Безлепкина Калерия Борисовна'}
                     description={'cute girl'}
                     imageSrc={'https://wdorogu.ru/images/wp-content/uploads/2020/10/feda8bbd51ff950-scaled.jpg'}

@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import KurgankovPopup, { IPopup } from "../../../../../Components/Kurgankov/KurgankovPopup/KurgankovPopup";
+import ArtamonovPopup, { IPopup } from "../../../../../Components/Artamonov/ArtamonovPopup/ArtamonovPopup";
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { Product } from "../models";
-import { kurgankovAxios } from "../../KurgankovPage";
+import { artamonovAxios } from '../../ArtamonovPage';
 import { Category } from "../../Category/models";
 import { Manufacture } from "../../Manufacture/models";
 
 type Props = IPopup & {
-    onEdit: (newProduct: Product) => void;
-    Product: Product
+    onCreate: (newProduct: Product) => void;
 }
 
-const EditProductPopup = ({ open, onClose, Product: ProductEdit, onEdit }: Props) => {
+const CreateProductPopup = ({ open, onClose, onCreate }: Props) => {
 
-    const [Product, setProduct] = useState(ProductEdit)
-
-    const onEditClick = () => {
-
-        kurgankovAxios.patch<{ item: Product }>('https://canstudy.ru/orderapi/Product',
+    const createProduct = () => {
+        artamonovAxios.post<{ item: Product }>('https://canstudy.ru/orderapi/Product',
             {
-                item: {
-                    ...Product
-                }
+                ...Product
             })
             .then(res => {
-                onEdit(res.data.item)
-                onClose();
+                onCreate(res.data.item)
             })
     }
 
@@ -34,14 +27,14 @@ const EditProductPopup = ({ open, onClose, Product: ProductEdit, onEdit }: Props
     const [manufactureList, setManufactureList] = useState<Manufacture[]>([])
 
     const getCategories = () => {
-        kurgankovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+        artamonovAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
             .then(res => {
                 setCategoryList(res.data.items);
             })
     }
 
     const getManufacturies = () => {
-        kurgankovAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
+        artamonovAxios.get<{ items: Manufacture[] }>('https://canstudy.ru/orderapi/manufacturer/list')
             .then(res => {
                 setManufactureList(res.data.items);
             })
@@ -52,10 +45,28 @@ const EditProductPopup = ({ open, onClose, Product: ProductEdit, onEdit }: Props
         getManufacturies();
     }, [])
 
+    const [Product, setProduct] = useState<Product>({
+        categoryId: 0,
+        categoryName: "",
+        cost: 0,
+        description: "",
+        id: 0,
+        manufacturerId: 0,
+        manufacturerName: "",
+        name: ""
+    })
+
+    const onCreateClick = () => {
+        createProduct();
+
+        onClose();
+    }
+
+    console.log(Product)
 
     return (
-        <KurgankovPopup
-            title={'Изменение клиента'}
+        <ArtamonovPopup
+            title={'Создание товара'}
             open={open}
             onClose={() => onClose()}
         >
@@ -63,9 +74,14 @@ const EditProductPopup = ({ open, onClose, Product: ProductEdit, onEdit }: Props
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '1em'
+                    gap: '1em',
+                    paddingTop: '1em'
                 }}
             >
+
+
+
+
                 <TextField
                     label="Название"
                     variant="standard"
@@ -121,19 +137,20 @@ const EditProductPopup = ({ open, onClose, Product: ProductEdit, onEdit }: Props
                     </Select>
                 </FormControl>
 
+
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Button
                         color={'primary'}
                         variant={'contained'}
-                        onClick={() => onEditClick()}
+                        onClick={() => onCreateClick()}
                     >
-                        Изменить
+                        Создать
                     </Button>
                 </div>
 
             </div>
-        </KurgankovPopup>
+        </ArtamonovPopup>
     );
 };
 
-export default EditProductPopup;
+export default CreateProductPopup;

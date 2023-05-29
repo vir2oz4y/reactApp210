@@ -1,6 +1,6 @@
 import { Button, Modal, Typography } from '@mui/material';
 import React from 'react';
-import "./KurgankovPopup.scss";
+import "./ArtamonovPopup.scss";
 
 export type IPopup = {
     open: boolean,
@@ -13,7 +13,7 @@ type Props = IPopup & {
     title: string
 }
 
-const KurgankovPopup = ({ open, onClose, children, title }: Props) => {
+const ArtamonovPopup = ({ open, onClose, children, title }: Props) => {
 
 
     return (<Modal
@@ -45,5 +45,4 @@ const KurgankovPopup = ({ open, onClose, children, title }: Props) => {
         </Typography>
     </Modal>)
 }
-
-export default KurgankovPopup;
+export default ArtamonovPopup;
